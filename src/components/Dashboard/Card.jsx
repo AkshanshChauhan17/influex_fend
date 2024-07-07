@@ -1,28 +1,23 @@
 import { useEffect, useState } from "react";
 import ImageLoader from "../ImageLoader";
-import { getRequest } from "../../functions/requests";
+import { API_BASE_URL, getRequest } from "../../functions/requests";
 import { Loader } from "react-feather";
 
-export default function Card({dt, imgData}) {
-    const [imgDataa, setImgDataa] = useState();
+export default function Card({dt, imgData, huc}) {
     const [videos, setVideos] = useState(0);
     useEffect(()=>{
         getRequest("/content/count/" + localStorage.id)
             .then(vid=>setVideos(vid.videos));
-
-        getRequest("/get-image?url=" + dt.profile_image_url)
-            .then(img=>setImgDataa(["data:image/jpg;base64," + img.lowResImage, "data:image/jpg;base64," + img.highResImage]));
-            return ()=>{
-                setImgDataa(null);
-            }
     }, [dt, imgData]);
     return <div className="dash-box">
         {dt==="" ?
             <div className="box-right">
-                <Loader className="loader" size={50} />
+                <Loader className="loader" style={{margin: "auto"}} size={50} />
             </div>
             :
-            <ImageLoader className="box-left" lowResSrc={imgDataa ? imgDataa[0] : ""} highResSrc={imgDataa ? imgDataa[1] : ""} alt={"user-image"}></ImageLoader>
+            <>
+                {dt.profile_image_url ? <ImageLoader className="box-left" lowResSrc={`${API_BASE_URL}/get-image?url=${dt.profile_image_url}&r=${100}`} highResSrc={`${API_BASE_URL}/get-image?url=${dt.profile_image_url}&r=${400}`} alt={"user-image"}></ImageLoader> : <div className="box-left"></div>}
+            </>
         }
 
         <div className="box-right">
@@ -41,8 +36,8 @@ export default function Card({dt, imgData}) {
                     </tr>
                 </table>
                 <div className="box-controls">
-                    <div className="box-small-button">SHARE</div>
-                    <div className="box-small-button">CHAT</div>
+                    <div className="box-small-button" onClick={huc}>NEW IMAGE</div>
+                    <div className="box-small-button">CONNECTIONS</div>
                 </div>
         </div>
     </div> 

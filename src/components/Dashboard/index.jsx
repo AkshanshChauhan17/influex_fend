@@ -18,11 +18,7 @@ export default function Dashboard() {
     useEffect(()=>{
         getRequest("/profile/" + localStorage.id)
             .then((r)=>{
-                setData(r)
-                if(r) {
-                    getRequest("/get-image?url=" + r.profile_image_url)
-                        .then(img=>setUrlImages(["data:image/jpg;base64," + img.lowResImage, "data:image/jpg;base64," + img.highResImage]));
-                }; 
+                setData(r);
             });
     }, [image]);
 
@@ -65,8 +61,8 @@ export default function Dashboard() {
         <div className="dashboard-pg">
             <div className="dash-head">DASHBOARD</div>
             <div className="dash-content">
-                <Card dt={data} imgData={urlImages} />
-                <div className="image-uploader-section">
+                <Card huc={handleUploadClick} dt={data} imgData={urlImages} />
+                <div className="image-uploader-section" style={{display: "none"}}>
                     {image && <ImageLoader className="image-view-section" lowResSrc={image ? image : ""} highResSrc={image ? image : ""} />}
                     <form className="image-uploader">
                         <input hidden ref={uploadTapper} type="file" name="image" onChange={handleImageUpload} />

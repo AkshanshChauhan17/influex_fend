@@ -1,7 +1,7 @@
 const local = "http://localhost:3000/api";
 const global = "https://api.influex.club/api";
 
-export const API_BASE_URL = global;
+export const API_BASE_URL = local;
 
 export const getRequest = async(endpoint, params = {}) => {
     const url = new URL(`${API_BASE_URL}${endpoint}`);

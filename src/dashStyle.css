@@ -81,8 +81,10 @@
 
 .upper-form {
     height: 300px;
-    display: grid;
+    display: flex;
+    flex-direction: column;
     width: 100%;
+    gap: 10px;
 }
 
 .upper-form input {
@@ -107,8 +109,8 @@
 .dash-content {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
-    padding: 20px;
+    gap: 10px;
+    padding: 10px;
     overflow-y: scroll;
     align-content: flex-start;
 }
@@ -233,13 +235,18 @@
 }
 
 .dash-videos-content {
-    padding: 20px;
-    margin: 20px;
+    padding: 10px;
+    margin: 10px;
     display: grid;
     gap: 20px;
     background-color: white;
     overflow-y: scroll;
+    align-content: flex-start;
     height: calc(100vh - 240px);
+}
+
+.dash-upload-content hr {
+    border-color: rgba(0, 0, 0, 0.1);
 }
 
 .video-thumbnail {
@@ -278,13 +285,140 @@
 }
 
 .dash-upload-content {
-    padding: 20px;
-    margin: 20px;
-    display: flex;
+    padding: 10px 20px;
+    margin: 10px;
+    display: grid;
     flex-wrap: wrap;
-    gap: 20px;
+    background: none;
     background-color: white;
-    height: calc(100vh - 245px);
+    height: calc(100% - 50px);
+    gap: 10px;
+    grid-template-rows: auto auto auto auto;
+}
+
+.middle {
+    display: grid;
+    grid-template-columns: 300px auto;
+    gap: 20px;
+    width: 100%;
+}
+
+.middle .left {
+    max-width: 300px;
+}
+
+.middle .right-r {
+    display: grid;
+    gap: 20px;
+}
+
+.vup-label {
+    color: rgba(0, 0, 0, 0.5);
+    font-weight: 700;
+    display: grid;
+    gap: 2px;
+    align-content: flex-start;
+}
+
+.vup-label input {
+    padding: 0px 0px;
+    background: none;
+    background-color: white;
+    color: black;
+    font-size: 20px;
+}
+
+.vup-heading {
+    display: flex;
+    gap: 2px;
+    font-size: 20px;
+    align-items: center;
+    width: fit-content;
+    font-weight: 600;
+}
+
+.vup-heading-ar {
+    display: flex;
+    justify-content: space-between;
+    height: fit-content;
+}
+
+.vup-heading {
+    cursor: pointer;
+}
+
+.vup-heading:hover {
+    color: #ff0000;
+}
+
+.vup-heading-button {
+    padding: 5px;
+    background-color:rgba(0, 0, 0, 0.1);
+    display: flex;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.vup-heading-button:hover {
+    color: #ff0000;
+    background-color: #ff000010;
+}
+
+.vup-label textarea {
+    padding: 16px 20px;
+    background: none;
+    background-color: white; 
+    resize: none;
+    height: calc(100% - 32px);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    color: black;
+    font-size: 20px;
+}
+
+.vup-bottom-controls {
+    display: flex;
+    justify-content: space-between;
+}
+
+.vup-bottom-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: none;
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    font-size: 20px;
+    gap: 20px;
+    font-family: Poppins;
+    width: fit-content;
+    font-weight: 100;
+}
+
+.vup-bottom-button:disabled {
+    opacity: 0.4;
+}
+
+.vup-label input:focus {
+    background-color: none;
+    background-color: white; 
+    color: black;
+}
+
+.vup-label textarea:focus {
+    background-color: none;
+    background-color: white; 
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    color: black;
+}
+
+.vup-label input::placeholder {
+    color: rgb(206, 206, 206);
+}
+
+.vup-label textarea::placeholder {
+    color: rgb(206, 206, 206);
 }
 
 .dash-upload-content .left {
@@ -293,15 +427,24 @@
 
 .dash-upload-content .right {
     flex: 1;
+    max-width: 500px;
 }
 
 .videos-ar {
     min-width: 300px;
-    background-color: white;
+    height: fit-content;
+    background-color: rgb(227, 227, 227);
     display: grid;
     gap: 4px;
     flex: 1;
     position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 180px;
+}
+
+.video-thumbnail {
+    height: 180px;
 }
 
 .over-hidden {
@@ -314,13 +457,13 @@
     align-items: center;
     background: none;
     background-color: #ffffff;
-    padding: 20px;
+    padding: 10px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0);
     margin: 0px !important;
     outline: 1px solid rgba(0, 0, 0, 0.1);
     flex: 1;
-    min-width: 200px;
+    gap: 10px;
   }
 
 .upload-controls {
@@ -340,7 +483,9 @@
     font-size: 20px;
     background: none;
     color: black;
-    border-bottom: 1px solid rgb(243, 243, 243);
+    width: calc(100% - 24px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: rgb(245, 245, 245);
   }
   
   .video-upload-form input::placeholder {
@@ -365,14 +510,40 @@
 .upload-thumb-ar {
     overflow: hidden;
     width: 100%;
-    height: 300px;
+    height: 290px;
     background-color: rgba(0, 0, 0, 0.05);
     border-radius: 10px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     color: gray;
     cursor: pointer;
+    padding: 20px;
+    gap: 20px;
+}
+
+.upload-thumb-ar-heading {
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.upload-thumb-ar-warning {
+    font-size: 12px;
+    text-align: center;
+    background-color: rgb(253, 238, 210);
+    padding: 0px;
+    border-radius: 10px;
+    color: orangered;
+    margin-top: 20px;
+    height: 0px;
+    overflow: hidden;
+    transition-duration: 0.3s;
+}
+
+.upload-thumb-ar:hover > .upload-thumb-ar-warning {
+    padding: 10px;
+    height: fit-content;
 }
 
 .upload-thumb-ar:hover {
@@ -528,4 +699,52 @@
 .nav-control-btn:active {
     background-color: black;
     color: rgb(255, 255, 255);
+}
+
+.remove {
+    display: flex;
+    align-items: center;
+    color: rgb(199, 0, 0);
+    padding: 2px 2px;
+    background-color: rgba(255, 0, 0, 0.2);
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 10px;
+    width: fit-content;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.remove::before {
+    content: 'Remove Video';
+    position: absolute;
+    top: 0;
+    right: 10px;
+    padding: 4px 10px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    opacity: 0;
+    width: fit-content;
+    width: 100px;
+    text-align: center;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateX(10px); /* Initial position outside the element */
+}
+  
+.remove:hover::before {
+    opacity: 1;
+    transform: translateX(-25px);
+    background-color: rgb(199, 0, 0);
+}
+
+.remove:hover {
+    background-color: rgb(199, 0, 0);
+    color: white;
+}
+
+.remove:active {
+    background-color: white;
+    color: red;
 }

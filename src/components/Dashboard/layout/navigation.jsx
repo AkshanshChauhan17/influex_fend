@@ -6,9 +6,9 @@ export const nav_links = [{
         link: "/"
     },
     {
-        title: "Videos",
+        title: "My Videos",
         icon: <Video size={20} strokeWidth={3}/>,
-        link: "/videos"
+        link: "/my videos"
     },
     {
         title: "Upload",

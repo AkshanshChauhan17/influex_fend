@@ -101,10 +101,13 @@ export default function Upload() {
     }
 
     return <div className="dashboard-pg">
-        <div className="dash-head">VIDEOS</div>
+        <div className="dash-head">
+                <div className="head-heading">UPLOAD</div>
+                <div className="head-subheading">UPLOAD YOUR CREATED CONTENT</div>
+            </div>
         <form className="dash-upload-content" onSubmit={handleSubmit}>
             <div className="vup-heading-ar">
-                <div className="vup-heading" onClick={()=>setVid(null)}><ArrowLeft />Back</div>
+                <div style={{opacity: vid===null ? "0" : "1"}} className="vup-heading" onClick={()=>setVid(null)}><ArrowLeft />Back</div>
                 <NavLink to={"/"} className="vup-heading-button"><X /></NavLink>
             </div>
             {vid === null ? <div className="upload-controls">

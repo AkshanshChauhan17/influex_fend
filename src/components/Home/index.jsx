@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import ImageLoader from "../ImageLoader";
 import "./index.css";
-import { ArrowDownRight, ArrowRight, ArrowUpRight } from "react-feather";
 
 export default function Home({logOpenFun}) {
 

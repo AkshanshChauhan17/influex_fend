@@ -59,7 +59,10 @@ export default function Dashboard() {
 
     return (
         <div className="dashboard-pg">
-            <div className="dash-head">DASHBOARD</div>
+            <div className="dash-head">
+                <div className="head-heading">DETAILS</div>
+                <div className="head-subheading">VIEW & EDIT YOUR INFORMATION</div>
+            </div>
             <div className="dash-content">
                 <Card huc={handleUploadClick} dt={data} imgData={urlImages} />
                 <div className="image-uploader-section" style={{display: "none"}}>
@@ -85,10 +88,10 @@ export default function Dashboard() {
                             </div>
                         })
                     }
-                </div>
-                <div className="user-data-edit-button" onClick={()=>handleUserEditUpdate()}>
+                    <div className="user-data-edit-button" onClick={()=>handleUserEditUpdate()}>
                         {loading ? <Loader className="loader" /> : "UPDATE"}
                     </div>
+                </div>
             </div>
         </div>
     )

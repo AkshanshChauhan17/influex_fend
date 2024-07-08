@@ -13,6 +13,7 @@ import Upload from './components/Dashboard/Upload'
 import DashNavigation from './components/Dashboard/Navigation'
 import { getRequest } from './functions/requests'
 import Login from './components/Login'
+import Home2 from './components/Home2'
 
 function App() {
   const [isLoading, setIsLoading] = useState(false);
@@ -55,7 +56,7 @@ function App() {
         <DashNavigation/>
         <Routes>
           <Route path='/' element={<Dashboard />} />
-          <Route path='/videos' element={<Videos />} />
+          <Route path='/my videos' element={<Videos />} />
           <Route path='/upload' element={<Upload />} />
         </Routes>
       </BrowserRouter>
@@ -70,10 +71,10 @@ function App() {
       {
         loginOpen && <Login loginKey={setLogKey} verifyLoginKey={verifyLoginKeyFun} openLogin={setLoginOpen} loginStatus={isLogin} />
       }
-      <Navigation />
       <BrowserRouter>
+        <Navigation />
         <Routes>
-          <Route path='/' element={<Home logOpenFun={setLoginOpen} />} />
+          <Route path='/' element={<Home2 logOpenFun={setLoginOpen} />} />
           <Route path='/inf-registration' element={<RegInfluencer />} />
           <Route path='/bnd-registration' element={<RegBrand />} />
         </Routes>

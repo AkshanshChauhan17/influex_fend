@@ -1,11 +1,12 @@
 import { NavLink, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { nav_links } from "../layout/navigation";
-import { LogOut } from "react-feather";
+import { ChevronLeft, ChevronRight, ChevronsLeft, LogOut, Menu } from "react-feather";
 
 export default function DashNavigation() {
     const [active, setActive] = useState(1);
     const location = useLocation();
+    const [menuOpen, setMenuOpen] = useState(false);
     const isFocused = (path)=> location.pathname === path;
 
     const handleLogout = ()=>{
@@ -15,11 +16,12 @@ export default function DashNavigation() {
     };
 
     return (
-        <div className="dash-nav">
+        <div className={menuOpen ? "dash-nav rollin" : "dash-nav"}>
             <div className="nav-title-ar">
                 <div className="primary-text">INFLUEX</div>
                 <div className="secondary-text">CREATOR DASHBOARD</div>
             </div>
+            {menuOpen ? <ChevronRight onClick={()=>setMenuOpen(false)} className="nav-puller" /> : <ChevronLeft onClick={()=>setMenuOpen(true)} className="nav-puller" />}
             <hr className="fade-70" />
             <div className="nav-links">
                 {
@@ -29,7 +31,7 @@ export default function DashNavigation() {
                 }
             </div>
             <div className="bottom-controls">
-                <button className="nav-control-btn" onClick={()=>handleLogout()}>Logout <LogOut size={16} strokeWidth={3} /></button>
+                <button className="nav-control-btn" onClick={()=>handleLogout()}><LogOut style={{rotate: "180deg"}} size={16} strokeWidth={3} />Logout</button>
             </div>
         </div>
     )

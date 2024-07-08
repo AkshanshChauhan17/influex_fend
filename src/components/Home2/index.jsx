@@ -33,7 +33,7 @@ export default function Home2() {
                         box_one_right_content.map((e, i)=>{
                             return <div className="image-loader-ar" key={i}>
                                 <Play className="icon" />
-                                <ImageLoader className="image" lowResSrc={"./src/assets/images/" + e} highResSrc={"./src/assets/images/" + e} />
+                                <ImageLoader className="image" lowResSrc={"./assets/images/" + e} highResSrc={"./src/assets/images/" + e} />
                             </div>
                         })
                     }
@@ -53,7 +53,7 @@ export default function Home2() {
                             <div className="right">
                                 <div className="image-loader-ar" key={i}>
                                     <Play className="icon" />
-                                    <ImageLoader className="image" lowResSrc={"./src/assets/images/" + e.image} highResSrc={"./src/assets/images/" + e.image} />
+                                    <ImageLoader className="image" lowResSrc={"./assets/images/" + e.image} highResSrc={"./src/assets/images/" + e.image} />
                                 </div>
                             </div>
                         </div>
@@ -68,7 +68,7 @@ export default function Home2() {
                         box_one_right_content.map((e, i)=>{
                             return <div className="image-loader-ar" key={i}>
                                 <Play className="icon" />
-                                <ImageLoader className="image" lowResSrc={"./src/assets/images/" + e} highResSrc={"./src/assets/images/" + e} />
+                                <ImageLoader className="image" lowResSrc={"./assets/images/" + e} highResSrc={"./src/assets/images/" + e} />
                             </div>
                         })
                     }
@@ -78,7 +78,7 @@ export default function Home2() {
                         box_one_right_content.map((e, i)=>{
                             return <div className="image-loader-ar" key={i}>
                                 <Play className="icon" />
-                                <ImageLoader className="image" lowResSrc={"./src/assets/images/" + e} highResSrc={"./src/assets/images/" + e} />
+                                <ImageLoader className="image" lowResSrc={"./assets/images/" + e} highResSrc={"./src/assets/images/" + e} />
                             </div>
                         })
                     }
@@ -88,7 +88,7 @@ export default function Home2() {
                         box_one_right_content.map((e, i)=>{
                             return <div className="image-loader-ar" key={i}>
                                 <Play className="icon" />
-                                <ImageLoader className="image" lowResSrc={"./src/assets/images/" + e} highResSrc={"./src/assets/images/" + e} />
+                                <ImageLoader className="image" lowResSrc={"./assets/images/" + e} highResSrc={"./src/assets/images/" + e} />
                             </div>
                         })
                     }

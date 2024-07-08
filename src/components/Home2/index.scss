@@ -17,13 +17,17 @@
                 font-family: Poppins;
                 color: white;
                 font-weight: 1000;
-                font-size: 50px;
+                font-size: 60px;
                 line-height: calc(60px * 1);
                 text-transform: capitalize;
+            }
+            .subheading {
+                opacity: 0.5;
             }
             .small-content {
                 font-size: 16px;
                 font-weight: 100;
+                opacity: 0.8;
             }
             .hollow-button {
                 padding: 14px 30px;
@@ -127,6 +131,7 @@
                 .small-content {
                     font-size: 16px;
                     font-weight: 100;
+                    opacity: 0.8;
                 }
                 .hollow-button {
                     padding: 14px 30px;
@@ -200,8 +205,9 @@
     gap: 80px;
     justify-content: center;
     justify-items: center;
+    background: radial-gradient(1000px, rgb(103, 108, 255), rgb(0, 0, 0));
     .title {
-        font-size: 50px;
+        font-size: 40px;
         font-family: Poppins;
         font-weight: 700;
         text-align: center;
@@ -209,20 +215,18 @@
     .bottom {
         display: grid;
         grid-template-columns: auto auto auto;
-        height: 600px;
+        height: fit-content;
         gap: 20px;
         width: 900px;
         justify-content: center;
         border-radius: 20px;
-        overflow: hidden;
-        background: radial-gradient(400px, rgb(102, 204, 255), rgba(35, 0, 0, 0));
         .bottom-inner-line::-webkit-scrollbar {
             display: none;
         }
         .bottom-inner-line {
             display: grid;
             gap: 20px;
-            height: 600px;
+            height: fit-content;
             justify-content: center;
             overflow-y: scroll;
             scroll-behavior: smooth;
@@ -271,6 +275,7 @@
             }
         }
         .bottom-inner-line:nth-child(even) {
+            margin-top: 150px;
             .image-loader-ar:nth-child(2) {
                 scroll-snap-align: start;
             }
@@ -311,4 +316,159 @@
 
 .primary-button:hover {
     gap: 20px;
+}
+
+.fourth-box {
+    padding: 80px 160px;
+    display: grid;
+    gap: 80px;
+    background: linear-gradient(45deg, rgb(0, 30, 65), rgb(0, 0, 133));
+    .title {
+        font-size: 40px;
+        font-family: Poppins;
+        font-weight: 900;
+        text-align: center;
+    }
+}
+
+.cards-ar {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    border-radius: 20px;
+    overflow: hidden;
+    .card {
+        display: grid;
+        gap: 16px;
+        padding: 80px 40px;
+        justify-items: center;
+        background-color: rgba(255, 255, 255, 0.2);
+        .card-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-position: center;
+            background-size: cover;
+            margin-bottom: 20px;
+        }
+        .card-rating {
+            display: flex;
+            gap: 10px;
+            font-size: 22px;
+            font-weight: 600;
+            color: rgb(0, 204, 255);
+            align-items: center;
+        }
+        .card-name {
+            font-size: 40px;
+            font-weight: 700;
+        }
+        .card-about {
+            opacity: 0.6;
+            font-size: 16px;
+            font-style: italic;
+        }
+    }
+    .card:nth-child(even) {
+        background: linear-gradient(180deg, rgb(0, 204, 255), rgb(0, 158, 201));
+        .card-rating {
+            display: flex;
+            gap: 10px;
+            font-size: 22px;
+            font-weight: 600;
+            color: rgb(0, 0, 0);
+            align-items: center;
+        }
+        .card-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-position: center;
+            background-size: cover;
+        }
+        .card-name {
+            font-size: 40px;
+            font-weight: 700;
+        }
+        .card-about {
+            opacity: 0.6;
+            font-size: 16px;
+            font-style: italic;
+        }
+    }
+}
+
+.fifth-box {
+    position: fixed;
+    top: 0;
+    height: calc(100vh - 160px);
+    z-index: 4000;
+    padding: 80px;
+    display: grid;
+    gap: 80px;
+    background-color: rgb(0, 0, 0);
+    align-content: start;
+    .title {
+        font-size: 40px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .close {
+            cursor: pointer;
+        }
+        .close:hover {
+            color: rgb(210, 0, 0);
+        }
+    }
+    .subtitle {
+        font-size: 16px;
+        opacity: 0.4;
+    }
+    .login-reg-section {
+        display: grid;
+        grid-template-columns: auto auto;
+        gap: 80px;
+        .title {
+            font-size: 30px;
+            font-weight: 400;
+        }
+        .login-reg {
+            display: grid;
+            gap: 30px;
+            padding: 40px;
+            border-radius: 20px;
+            background: linear-gradient(45deg, rgb(23, 23, 23), rgb(34, 30, 30));
+        }
+        .link {
+            padding: 14px 30px;
+            border-radius: 50px;
+            background-color: rgb(0, 183, 255);
+            color: white;
+            text-decoration: none;
+            width: fit-content;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .link-two {
+            padding: 14px 30px;
+            border-radius: 50px;
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0));
+            color: rgb(0, 183, 255);
+            outline: 1px solid rgba(0, 183, 255, 0.5);
+            text-decoration: none;
+            width: fit-content;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .links {
+            margin-top: 20px;
+            display: flex;
+            gap: 12px;
+        }
+    }
+    .login-reg:hover {
+        outline: 1px solid rgba(0, 183, 255, 0.5);
+    }
 }

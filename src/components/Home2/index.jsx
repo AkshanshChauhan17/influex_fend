@@ -1,11 +1,14 @@
-import { ArrowRight, Play, Send } from 'react-feather';
+import { ArrowRight, LogIn, Play, Send, Star, X } from 'react-feather';
 import './index.scss';
 import ImageLoader from '../ImageLoader';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Home2() {
 
     const bottomRef = useRef(null);
+
+    const [isLoginOpen, setIsLoginOpen] = useState(false);
 
     const box_one_right_content = ["c1.avif", "c2.avif", "c3.jpg", "c4.avif"];
     const box_two_content = [
@@ -20,20 +23,47 @@ export default function Home2() {
             image: "c6.avif"
         }
     ];
+    const fourth_box_card_data = [{
+        image: "user1.avif",
+        rating: 4.54,
+        name: "Creator X",
+        about: "20M followers on instagram!"
+    },{
+        image: "user2.avif",
+        rating: 4.95,
+        name: "Creator Y",
+        about: "35M followers on instagram!"
+    },{
+        image: "user3.avif",
+        rating: 4.76,
+        name: "Creator Z",
+        about: "12M followers on instagram!"
+    }];
+
+    const register_login_data = [{
+        title: "Login with Creator",
+        subtitle: "Ready to collaborate and showcase your creativity? Log in to your creator account to access exclusive brand collaborations, manage your projects, and connect with a community of like-minded creators.",
+        url: "/login/creator"
+    },{
+        title: "Login with Brand",
+        subtitle: "Unlock the potential of creator collaborations and user-generated content for your brand. Log in to your brand account to discover talented creators, manage your campaigns, and analyze performance.",
+        url: "/login/brand"
+    }];
     return (
         <div className="home-two">
             <div className="first-box">
                 <div className="left">
-                    <div className='heading'>Het gkkstt UGC platform via jskdk</div>
-                    <div className="small-content">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab natus sed magnam corrupti qui molestias blanditiis nostrum voluptatum officia!</div>
-                    <div className="hollow-button"><Send /> Begin your journey</div>
+                    <div className='heading'>Welcome to InflueX</div>
+                    <div className="subheading">Elevate Your Brand with Authentic UGC Videos and Powerful Creator Collaborations</div>
+                    <div className="small-content">In today's digital age, authenticity is the key to connecting with your audience. At InflueX, we specialize in harnessing the power of User-Generated Content (UGC) and creator collaborations to elevate your brand's presence and engagement.</div>
+                    <div className="hollow-button"><LogIn />Login</div>
                 </div>
                 <div className="right">
                     {
                         box_one_right_content.map((e, i)=>{
                             return <div className="image-loader-ar" key={i}>
                                 <Play className="icon" />
-                                <ImageLoader className="image" lowResSrc={"./assets/images/" + e} highResSrc={"./src/assets/images/" + e} />
+                                <ImageLoader className="image" lowResSrc={"./src/assets/images/" + e} highResSrc={"./src/assets/images/" + e} />
                             </div>
                         })
                     }
@@ -53,7 +83,7 @@ export default function Home2() {
                             <div className="right">
                                 <div className="image-loader-ar" key={i}>
                                     <Play className="icon" />
-                                    <ImageLoader className="image" lowResSrc={"./assets/images/" + e.image} highResSrc={"./src/assets/images/" + e.image} />
+                                    <ImageLoader className="image" lowResSrc={"./src/assets/images/" + e.image} highResSrc={"./src/assets/images/" + e.image} />
                                 </div>
                             </div>
                         </div>
@@ -68,7 +98,7 @@ export default function Home2() {
                         box_one_right_content.map((e, i)=>{
                             return <div className="image-loader-ar" key={i}>
                                 <Play className="icon" />
-                                <ImageLoader className="image" lowResSrc={"./assets/images/" + e} highResSrc={"./src/assets/images/" + e} />
+                                <ImageLoader className="image" lowResSrc={"./src/assets/images/" + e} highResSrc={"./src/assets/images/" + e} />
                             </div>
                         })
                     }
@@ -78,7 +108,7 @@ export default function Home2() {
                         box_one_right_content.map((e, i)=>{
                             return <div className="image-loader-ar" key={i}>
                                 <Play className="icon" />
-                                <ImageLoader className="image" lowResSrc={"./assets/images/" + e} highResSrc={"./src/assets/images/" + e} />
+                                <ImageLoader className="image" lowResSrc={"./src/assets/images/" + e} highResSrc={"./src/assets/images/" + e} />
                             </div>
                         })
                     }
@@ -88,7 +118,7 @@ export default function Home2() {
                         box_one_right_content.map((e, i)=>{
                             return <div className="image-loader-ar" key={i}>
                                 <Play className="icon" />
-                                <ImageLoader className="image" lowResSrc={"./assets/images/" + e} highResSrc={"./src/assets/images/" + e} />
+                                <ImageLoader className="image" lowResSrc={"./src/assets/images/" + e} highResSrc={"./src/assets/images/" + e} />
                             </div>
                         })
                     }
@@ -96,6 +126,43 @@ export default function Home2() {
                 </div>
                 <div className='primary-button'>See Example UGCs <ArrowRight /></div>
             </div>
+            <div className="fourth-box">
+                <div className="title">Testimonial</div>
+                <div className="cards-ar">
+                    {
+                        fourth_box_card_data.map((e, i)=>{
+                            return <div className="card" key={i}>
+                                <ImageLoader className="card-image" lowResSrc={"./src/assets/images/" + e.image} highResSrc={"./src/assets/images/" + e.image} />
+                                <div className="card-rating">
+                                    <Star strokeWidth={0} fill={i===1 ? 'black' : 'rgb(0, 204, 255)'}/>{e.rating}
+                                </div>
+                                <div className="card-name">{e.name}</div>
+                                <div className="card-about">{e.about}</div>
+                            </div>
+                        })
+                    }
+                </div>
+            </div>
+            {isLoginOpen && <div className="fifth-box">
+                <div className="title">
+                    <>Login | Register</>
+                    <X className='close' size={40} onClick={()=>setIsLoginOpen(false)} />
+                </div>
+                <div className="login-reg-section">
+                    {
+                        register_login_data.map((e, i)=>{
+                            return <div className="login-reg" key={i}>
+                                <div className="title">{e.title}</div>
+                                <div className="subtitle">{e.subtitle}</div>
+                                <div className="links">
+                                    <Link className="link" to={e.url}>Login</Link>
+                                    <Link className="link-two" to={e.url}>Register</Link>
+                                </div>
+                            </div>
+                        })
+                    }
+                </div>
+            </div>}
         </div>
     )
 }

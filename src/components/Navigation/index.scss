@@ -13,6 +13,7 @@
     backdrop-filter: blur(30px);
     .left-logo {
         width: 50px;
+        background-size: contain;
         transform: scale(1.5);
         mix-blend-mode: screen;
     }
@@ -45,4 +46,24 @@
             display: inline-block;
         }
     }
+}
+
+.online {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    font-size: 16px;
+    color: greenyellow;
+    filter: drop-shadow(0px 0px 2px rgba(172, 255, 47, 0.5));
+    margin-left: 30px;
+}
+
+.offline {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    font-size: 16px;
+    color: rgb(255, 47, 47);
+    filter: drop-shadow(0px 0px 2px rgb(255, 47, 47, 0.5));
+    margin-left: 30px;
 }

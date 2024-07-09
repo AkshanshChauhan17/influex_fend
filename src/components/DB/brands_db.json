@@ -1,0 +1,121 @@
+[{
+        "Company Name": "BuzzFeed",
+        "Industry": "Digital Media",
+        "Headquarters": "New York, USA",
+        "Logo": "https://upload.wikimedia.org/wikipedia/commons/e/e4/BuzzFeed.svg"
+    },
+    {
+        "Company Name": "Vox Media",
+        "Industry": "Digital Media",
+        "Headquarters": "Washington D.C., USA",
+        "Logo": "https://upload.wikimedia.org/wikipedia/commons/3/36/Vox_Media_logo.svg"
+    },
+    {
+        "Company Name": "Conde Nast",
+        "Industry": "Publishing",
+        "Headquarters": "New York, USA",
+        "Logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Cond%C3%A9_Nast_logo.svg/1280px-Cond%C3%A9_Nast_logo.svg.png"
+    },
+    {
+        "Company Name": "HuffPost",
+        "Industry": "Digital Media",
+        "Headquarters": "New York, USA",
+        "Logo": "https://upload.wikimedia.org/wikipedia/commons/5/5a/HuffPost.svg"
+    },
+    {
+        "Company Name": "VICE Media",
+        "Industry": "Digital Media",
+        "Headquarters": "New York, USA",
+        "Logo": "https://upload.wikimedia.org/wikipedia/commons/c/c0/Vice_logo.svg"
+    },
+    {
+        "Company Name": "Red Bull Media House",
+        "Industry": "Media and Entertainment",
+        "Headquarters": "Fuschl am See, Austria",
+        "Logo": "https://www.redbullmediahouse.com/5ceec2709f9d18abe0b58dcc03658f0a.svg"
+    },
+    {
+        "Company Name": "Bleacher Report",
+        "Industry": "Sports Media",
+        "Headquarters": "San Francisco, USA",
+        "Logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Bleacher_Report_logo.svg/768px-Bleacher_Report_logo.svg.png"
+    },
+    {
+        "Company Name": "National Geographic",
+        "Industry": "Media",
+        "Headquarters": "Washington D.C., USA",
+        "Logo": "https://upload.wikimedia.org/wikipedia/commons/f/fc/Natgeologo.svg"
+    },
+    {
+        "Company Name": "Complex Networks",
+        "Industry": "Media",
+        "Headquarters": "New York, USA",
+        "Logo": "https://upload.wikimedia.org/wikipedia/commons/6/61/Complex_networks.jpg"
+    },
+    {
+        "Company Name": "Group Nine Media",
+        "Industry": "Digital Media",
+        "Headquarters": "New York, USA",
+        "Logo": "https://upload.wikimedia.org/wikipedia/commons/a/ae/Nine_Media_Corporation.svg"
+    },
+    {
+        "Company Name": "Tastemade",
+        "Industry": "Digital Media",
+        "Headquarters": "Santa Monica, USA",
+        "Logo": "https://upload.wikimedia.org/wikipedia/commons/b/bc/TastemadeLogo.svg"
+    },
+    {
+        "Company Name": "Refinery29",
+        "Industry": "Digital Media",
+        "Headquarters": "New York, USA",
+        "Logo": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Refinery29_logo.svg"
+    },
+    {
+        "Company Name": "Discovery Digital Networks",
+        "Industry": "Digital Media",
+        "Headquarters": "San Francisco, USA",
+        "Logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Discovery_Digital_Networks_logo.svg/1280px-Discovery_Digital_Networks_logo.svg.png"
+    },
+    {
+        "Company Name": "Mashable",
+        "Industry": "Digital Media",
+        "Headquarters": "New York, USA",
+        "Logo": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Mashable_Logo_%282021%29.svg"
+    },
+    {
+        "Company Name": "The Dodo",
+        "Industry": "Digital Media",
+        "Headquarters": "New York, USA",
+        "Logo": "https://upload.wikimedia.org/wikipedia/en/a/a7/The_Dodo_logo.svg"
+    },
+    {
+        "Company Name": "Fullscreen",
+        "Industry": "Digital Media",
+        "Headquarters": "Los Angeles, USA",
+        "Logo": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Fullscreen_%28company%29_logo_2018.svg"
+    },
+    {
+        "Company Name": "AwesomenessTV",
+        "Industry": "Digital Media",
+        "Headquarters": "Los Angeles, USA",
+        "Logo": "https://upload.wikimedia.org/wikipedia/commons/9/97/AwesomenessTV_Logo.png"
+    },
+    {
+        "Company Name": "LittleThings",
+        "Industry": "Digital Media",
+        "Headquarters": "New York, USA",
+        "Logo": "https://upload.wikimedia.org/wikipedia/en/3/3a/Little_Things_cover.jpg"
+    },
+    {
+        "Company Name": "The Young Turks",
+        "Industry": "Digital Media",
+        "Headquarters": "Los Angeles, USA",
+        "Logo": "https://upload.wikimedia.org/wikipedia/commons/8/8c/TheYoungTurks-Logo.png"
+    },
+    {
+        "Company Name": "Rooster Teeth",
+        "Industry": "Digital Media",
+        "Headquarters": "Austin, USA",
+        "Logo": "https://upload.wikimedia.org/wikipedia/commons/7/7c/Rooster-teeth-logo-new.svg"
+    }
+]

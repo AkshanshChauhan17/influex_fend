@@ -40,7 +40,7 @@ const ImageLoader = ({ lowResSrc, highResSrc, alt, className, animate }) => {
       alt={alt}
       style={{
         backgroundImage: `url(${src})`,
-        backgroundSize: `${animate ? zoomLevel + "%" : "cover"}`
+        backgroundSize: `${animate ? "contain" : "cover"}`
       }}
     ></div>
   );

@@ -3,24 +3,28 @@ import './index.scss';
 import ImageLoader from '../ImageLoader';
 import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import brand_data from '../DB/brands_db.json';
 
 export default function Home2() {
 
     const bottomRef = useRef(null);
-
     const [isLoginOpen, setIsLoginOpen] = useState(false);
+
+    const [e, setE] = useState(null);
 
     const box_one_right_content = ["c1.avif", "c2.avif", "c3.jpg", "c4.avif"];
     const box_two_content = [
         {
             title: "How to Create Engaging UGC Videos",
             content: "Creating engaging User-Generated Content (UGC) videos is key to building a loyal audience and attracting brand collaborations. Here are some tips to help you craft compelling videos",
-            image: "c5.avif"
+            image: "c5.avif",
+            link: "/tutorial/tu_1"
         }, 
         {
             title: "Maximizing Brand Collaborations on InflueX",
-            content: "Collaborating with brands can be a lucrative opportunity for creators on InflueX. Here’s how you can maximize these collaborations:",
-            image: "c6.avif"
+            content: "Collaborating with brands can be a lucrative opportunity for creators on InflueX. Here’s how you can maximize these collaborations",
+            image: "c6.avif",
+            link: "/tutorial/tu_2"
         }
     ];
     const fourth_box_card_data = [{
@@ -43,11 +47,11 @@ export default function Home2() {
     const register_login_data = [{
         title: "Login with Creator",
         subtitle: "Ready to collaborate and showcase your creativity? Log in to your creator account to access exclusive brand collaborations, manage your projects, and connect with a community of like-minded creators.",
-        url: "/login/creator"
+        url: ["/login/creator", "/inf-registration"]
     },{
         title: "Login with Brand",
         subtitle: "Unlock the potential of creator collaborations and user-generated content for your brand. Log in to your brand account to discover talented creators, manage your campaigns, and analyze performance.",
-        url: "/login/brand"
+        url: ["/login/brand", "/bnd-registration"]
     }];
     return (
         <div className="home-two">
@@ -56,7 +60,7 @@ export default function Home2() {
                     <div className='heading'>Welcome to InflueX</div>
                     <div className="subheading">Elevate Your Brand with Authentic UGC Videos and Powerful Creator Collaborations</div>
                     <div className="small-content">In today's digital age, authenticity is the key to connecting with your audience. At InflueX, we specialize in harnessing the power of User-Generated Content (UGC) and creator collaborations to elevate your brand's presence and engagement.</div>
-                    <div className="hollow-button"><LogIn />Login</div>
+                    <div className="hollow-button" onClick={()=>setIsLoginOpen(true)}><LogIn />Login</div>
                 </div>
                 <div className="right">
                     {
@@ -79,6 +83,7 @@ export default function Home2() {
                             <div className="left">
                                 <div className="heading">{e.title}</div>
                                 <div className="small-content">{e.content}</div>
+                                <Link to={e.link} className='link'>Start learning <ArrowRight size={20} /></Link>
                             </div>
                             <div className="right">
                                 <div className="image-loader-ar" key={i}>
@@ -89,6 +94,25 @@ export default function Home2() {
                         </div>
                     })
                 }
+            </div>
+            {e!==null && <div className="brand-data" onClick={()=>setE(null)}>
+                <ImageLoader animate={true} className="brand-data-image" lowResSrc={e.Logo} highResSrc={e.Logo} />
+                <div className="brand-data-name">{e['Company Name']}</div>
+                <div className="brand-data-type">{e.Industry}</div>
+                <div className="brand-data-location">{e.Headquarters}</div>
+                <div className="hint">Click again for close this window</div>
+            </div>}
+            <div className="white-section">
+                <div className="title">Our Collaboration Brands</div>
+                <div className="brands">
+                    {
+                        brand_data.map((e, i) => {
+                            return <div className="brand" key={i} onClick={()=>setE(e)}>
+                                <ImageLoader animate={true} className="brand-image" lowResSrc={e.Logo} highResSrc={e.Logo} />
+                            </div>
+                        })
+                    }
+                </div>
             </div>
             <div className="third-box">
                 <div className="title">Fancy UGC that does convert</div>
@@ -142,6 +166,7 @@ export default function Home2() {
                         })
                     }
                 </div>
+                <Link to="/creators" className='link'>Explore creators <ArrowRight size={20} /></Link>
             </div>
             {isLoginOpen && <div className="fifth-box">
                 <div className="title">
@@ -155,8 +180,8 @@ export default function Home2() {
                                 <div className="title">{e.title}</div>
                                 <div className="subtitle">{e.subtitle}</div>
                                 <div className="links">
-                                    <Link className="link" to={e.url}>Login</Link>
-                                    <Link className="link-two" to={e.url}>Register</Link>
+                                    <Link className="link" to={e.url[0]}>Login</Link>
+                                    <Link className="link-two" to={e.url[1]}>Register</Link>
                                 </div>
                             </div>
                         })

@@ -75,6 +75,9 @@ function App() {
         <Navigation />
         <Routes>
           <Route path='/' element={<Home2 logOpenFun={setLoginOpen} />} />
+          <Route path='/login'>
+            <Route path='creator' element={<Login />}></Route>
+          </Route>
           <Route path='/inf-registration' element={<RegInfluencer />} />
           <Route path='/bnd-registration' element={<RegBrand />} />
         </Routes>

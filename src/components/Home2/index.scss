@@ -35,8 +35,15 @@
                 gap: 10px;
                 width: fit-content;
                 border-radius: 50px;
+                cursor: pointer;
+                transition-duration: 0.3s;
                 outline: 1px solid rgba(255, 255, 255, 0.5);
                 background: linear-gradient(0deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.2));
+            }
+            .hollow-button:hover {
+                background: rgba(255, 255, 255, 0.416);
+                color: rgb(255, 255, 255);
+                gap: 20px;
             }
         }
         .right {
@@ -141,6 +148,21 @@
                     border-radius: 50px;
                     outline: 1px solid rgba(255, 255, 255, 0.5);
                     background: linear-gradient(0deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.2));
+                }
+                .link {
+                    color: rgb(209, 252, 255);
+                    font-size: 16px;
+                    text-decoration: none;
+                    margin-top: 40px;
+                    width: fit-content;
+                    transition-duration: 0.3s;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                }
+                .link:hover {
+                    color: rgb(0, 238, 255);
+                    gap: 20px;
                 }
             }
             .right {
@@ -328,6 +350,128 @@
         font-family: Poppins;
         font-weight: 900;
         text-align: center;
+    }
+    .link {
+        color: rgb(209, 252, 255);
+        font-size: 16px;
+        text-decoration: none;
+        margin-top: 0px;
+        width: fit-content;
+        transition-duration: 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 30px;
+        background: linear-gradient(180deg, rgb(0, 221, 237), rgba(255, 0, 0, 0));
+        color: rgb(255, 255, 255);
+        border-radius: 50px;
+        margin: 0px auto;
+        text-transform: capitalize;
+    }
+    .link:hover {
+        gap: 20px;
+    }
+}
+
+.white-section {
+    padding: 80px;
+    background: radial-gradient(50vw, rgb(0, 0, 0), rgb(46, 46, 46));
+    display: grid;
+    gap: 80px;
+    .title {
+        color: rgb(255, 255, 255);
+        font-size: 40px;
+        text-align: center;
+    }
+    .brands {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1px;
+        align-items: center;
+        justify-content: center;
+        .brand {
+            transform: rotate3d(0, 0, 1, 1deg);
+            border-radius: 0px;
+            padding: 30px 50px;
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.9);
+            .brand-image {
+                width: 100px;
+                height: 100px;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+            .title {
+                font-size: 30px;
+                color: rgb(96, 96, 96);
+                font-weight: 100;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-style: italic;
+            }
+        }
+        .brand:hover {
+            background-color: rgba(255, 255, 255, 1);
+        }
+    }
+}
+
+.brand-data {
+    animation: winopen 0.3s ease-in-out reverse;
+    cursor: pointer;
+    display: grid;
+    width: calc(100vw - 260px);
+    height: calc(100vh - 240px);
+    padding: 80px;
+    top: 40px;
+    left: 40px;
+    border-radius: 10px;
+    position: fixed;
+    background-color: white;
+    z-index: 2000;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    .brand-data-image {
+        background-repeat: no-repeat;
+        height: 200px;
+        margin-bottom: 40px;
+        width: 200px;
+        background-position: center;
+        outline: 0px solid rgba(0, 0, 0, 0.2);
+    }
+    .brand-data-name {
+        color: black;
+        font-size: 40px;
+        font-weight: 600;
+        margin-bottom: 40px;
+    }
+    .brand-data-location {
+        display: flex;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 20px;
+        font-style: italic;
+    }
+    .brand-data-type {
+        color: rgba(0, 0, 0, 0.8);
+        font-size: 30px;
+        margin-bottom: 12px;
+    }
+    .hint {
+        color: rgba(0, 0, 0, 0.2);
+        margin-top: 40px;
+        padding: 10px 20px;
+        border-radius: 50px;
+        font-size: 20px;
+    }
+}
+
+@keyframes winopen {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(0);
     }
 }
 

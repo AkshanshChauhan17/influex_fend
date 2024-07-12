@@ -1,4 +1,4 @@
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { nav_links } from "../layout/navigation";
 import { ChevronLeft, ChevronRight, ChevronsLeft, LogOut, Menu } from "react-feather";
@@ -6,12 +6,13 @@ import { ChevronLeft, ChevronRight, ChevronsLeft, LogOut, Menu } from "react-fea
 export default function DashNavigation({ld}) {
     const [active, setActive] = useState(1);
     const location = useLocation();
+    const navigation = useNavigate();
     const [menuOpen, setMenuOpen] = useState(false);
     const isFocused = (path)=> location.pathname === path;
 
     const handleLogout = ()=>{
         localStorage.clear();
-        window.location.href = "/";
+        navigation("/");
         window.location.reload();
     };
 

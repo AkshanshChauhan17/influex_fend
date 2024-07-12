@@ -1,6 +1,10 @@
 import { Book, Info, Settings, Slack, Upload, Users, Video } from "react-feather";
 
 export const nav_links = [{
+        title: "Dashboard",
+        icon: <Info size={20} strokeWidth={3} />,
+        link: "/"
+    },{
         title: "Brands",
         icon: <Slack size={20} strokeWidth={3} />,
         link: "/brands"
@@ -12,10 +16,6 @@ export const nav_links = [{
         title: "Creators",
         icon: <Users size={20} strokeWidth={3} />,
         link: "/creators"
-    },{
-        title: "Dashboard",
-        icon: <Info size={20} strokeWidth={3} />,
-        link: "/"
     },{
         title: "Upload",
         icon: <Upload size={20} strokeWidth={3} />,

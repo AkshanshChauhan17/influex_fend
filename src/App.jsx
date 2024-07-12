@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Router, Routes, useNavigate } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
 import './dashStyle.css'
 import Home from './components/Home'
@@ -25,7 +25,6 @@ function App() {
   const [loginOpen, setLoginOpen] = useState(false);
   const [logKey, setLogKey] = useState("");
   const [loginData, setLoginData] = useState();
-  const navigation = useNavigate();
 
   const verifyLoginKeyFun = ()=>{
     setIsLoading(true);
@@ -34,7 +33,7 @@ function App() {
         setIsLogin(e.status);
         if(e.status) {
           setLoginData(e);
-          navigation("/");
+          window.location.href = "/";
           localStorage.setItem("login_key", e.profile.login_token);
           localStorage.setItem("id", e.profile.id);
           localStorage.setItem("email", e.profile.email);
@@ -48,7 +47,6 @@ function App() {
       .then((e)=>{
         setIsLogin(e.status);
         if(e.status) {
-          navigation("/");
           setLoginData(e);
           localStorage.setItem("login_key", e.profile.login_token);
           localStorage.setItem("id", e.profile.id);

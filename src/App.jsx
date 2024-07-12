@@ -83,9 +83,7 @@ function App() {
         <Navigation />
         <Routes>
           <Route path='/' element={<Home2 logOpenFun={setLoginOpen} />} />
-          <Route path='/login'>
-            <Route path='creator' element={<Login loginKey={setLogKey} verifyLoginKey={verifyLoginKeyFun} openLogin={setLoginOpen} loginStatus={isLogin} />}></Route>
-          </Route>
+          <Route path='/login' element={<Login loginKey={setLogKey} verifyLoginKey={verifyLoginKeyFun} openLogin={setLoginOpen} loginStatus={isLogin} />} />
           <Route path='/our services' element={<OurServices />} />
           <Route path='/inf-registration' element={<RegInfluencer />} />
           <Route path='/bnd-registration' element={<RegBrand />} />

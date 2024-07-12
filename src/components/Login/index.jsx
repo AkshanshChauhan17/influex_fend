@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { X } from "react-feather";
+import { useNavigate } from "react-router-dom";
 
 export default function Login({loginKey, verifyLoginKey, openLogin, loginStatus}) {
     const [loginClicked, setLoginClicked] = useState(false);
+    const navigation = useNavigate();
     return <div className="login-ar">
-        <div className="close-icon" onClick={()=>openLogin(false)}>Close <X/></div>
+        <div className="close-icon" onClick={()=>{navigation("/")}}>Close <X/></div>
         {
             loginClicked &&
             <>

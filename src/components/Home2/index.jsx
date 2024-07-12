@@ -180,7 +180,7 @@ export default function Home2() {
                                 <div className="title">{e.title}</div>
                                 <div className="subtitle">{e.subtitle}</div>
                                 <div className="links">
-                                    <Link className="link" to={e.url[0]}>Login</Link>
+                                    <Link className="link" to={"/login"}>Login</Link>
                                     <Link className="link-two" to={e.url[1]}>Register</Link>
                                 </div>
                             </div>

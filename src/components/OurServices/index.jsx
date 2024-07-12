@@ -79,7 +79,7 @@ export default function OurServices() {
                     }
                 </div>
                 <div className="links">
-                    <Link className="link" to={"/courses"}>Explore <ArrowRight /></Link>
+                    <Link className="link" to={"/login"}>Explore <ArrowRight /></Link>
                 </div>
             </div>
         </div>

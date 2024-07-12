@@ -68,7 +68,7 @@ export default function Dashboard() {
                 <div className="image-uploader-section" style={{display: "none"}}>
                     {image && <ImageLoader className="image-view-section" lowResSrc={image ? image : ""} highResSrc={image ? image : ""} />}
                     <form className="image-uploader">
-                        <input hidden ref={uploadTapper} type="file" name="image" onChange={handleImageUpload} />
+                        <input hidden ref={uploadTapper} type="file" name="image" onChange={handleImageUpload} accept="image/*" />
                         <Upload size={40} className="image-upload-icon" onClick={handleUploadClick} />
                     </form>
                 </div>

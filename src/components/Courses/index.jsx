@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react"
-import ImageLoader from "../../ImageLoader"
-import { API_BASE_URL, deleteRequest, getRequest } from "../../../functions/requests";
-import { Loader, Pause, Play, X } from "react-feather";
+import ImageLoader from "../ImageLoader";
+import { API_BASE_URL, deleteRequest, getRequest } from "../../functions/requests";
+import { X } from "react-feather";
 
-export default function Videos({ld}) {
+export default function Courses({ld}) {
     const [allVideosData, setAllVideosData] = useState([]);
     const [videoPlayed, setVideoPlayed] = useState();
     const [removed, setRemoved] = useState(1);
@@ -27,7 +27,7 @@ export default function Videos({ld}) {
     };
 
     useEffect(()=>{
-      getRequest("/content?type=ugc", {})
+      getRequest("/content?type=course", {})
         .then((e)=>{
           setAllVideosData(e);
         })
@@ -35,8 +35,8 @@ export default function Videos({ld}) {
 
     return <div className="dashboard-pg">
         <div className="dash-head">
-            <div className="head-heading">UGC VIDEOS</div>
-            <div className="head-subheading">VIEW & EDIT YOUR CONTENT</div>
+            <div className="head-heading">Courses</div>
+            <div className="head-subheading">VIEW & EDIT COURSES</div>
         </div>
         <div className="dash-videos-content">
             <div className="videos-section">

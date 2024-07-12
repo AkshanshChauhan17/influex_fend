@@ -3,7 +3,7 @@ import { useState } from "react";
 import { nav_links } from "../layout/navigation";
 import { ChevronLeft, ChevronRight, ChevronsLeft, LogOut, Menu } from "react-feather";
 
-export default function DashNavigation() {
+export default function DashNavigation({ld}) {
     const [active, setActive] = useState(1);
     const location = useLocation();
     const [menuOpen, setMenuOpen] = useState(false);
@@ -19,7 +19,7 @@ export default function DashNavigation() {
         <div className={menuOpen ? "dash-nav rollin" : "dash-nav"}>
             <div className="nav-title-ar">
                 <div className="primary-text">INFLUEX</div>
-                <div className="secondary-text">CREATOR DASHBOARD</div>
+                <div className="secondary-text">{ld && ld.profile.type.toUpperCase()} DASHBOARD</div>
             </div>
             {menuOpen ? <ChevronRight onClick={()=>setMenuOpen(false)} className="nav-puller" /> : <ChevronLeft onClick={()=>setMenuOpen(true)} className="nav-puller" />}
             <hr className="fade-70" />

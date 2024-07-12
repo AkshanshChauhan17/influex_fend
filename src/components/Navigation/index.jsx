@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import ImageLoader from "../ImageLoader";
 import "./index.scss";
 import ScrollPercentage from "../ScrollingPercentage";
@@ -8,6 +8,7 @@ import { Wifi, WifiOff } from "react-feather";
 export default function Navigation() {
     const [hide, setHide] = useState(true);
     const [isOnline, setIsOnline] = useState(navigator.onLine);
+    const location = useLocation();
 
     useEffect(() => {
 
@@ -28,9 +29,9 @@ export default function Navigation() {
         <ImageLoader className="left-logo" lowResSrc={"./src/assets/logo-low.png"} highResSrc={"./src/assets/logo-high.png"} />
         <ScrollPercentage shDef={setHide} />
         <div className="right-links">
-            <Link className="active-link">Home</Link>
-            <Link className="link">Our Services</Link>
-            <Link className="link">Influex Club</Link>
+            <Link to={"/"} className={location.pathname==="/" ? "active-link" : "link"}>Home</Link>
+            <Link to={"/our services"} className={location.pathname==="/our%20services" ? "active-link" : "link"}>Our Services</Link>
+            <Link to={"/"} className={location.pathname==="/" ? "active-link" : "link"}>Influex Club</Link>
             {
                 isOnline ? <div className="online"><Wifi />Online</div>
                 : <div className="offline"><WifiOff />Offline</div>

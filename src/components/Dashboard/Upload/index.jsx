@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { processTextWithTags } from "../../../functions/compiler";
-import { ArrowLeft, Link, Loader, Upload as UploadIcon, Video, X } from "react-feather";
+import { ArrowLeft, Book, Link, Loader, Upload as UploadIcon, Video, X } from "react-feather";
 import { NavLink, useNavigate } from "react-router-dom";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import { API_BASE_URL } from "../../../functions/requests";
@@ -16,7 +16,8 @@ export default function Upload() {
         subtitle: "",
         video: null,
         hashtags: "",
-        description: ""
+        description: "",
+        type: ""
     });
 
     const handleChange = (e) => {
@@ -36,6 +37,7 @@ export default function Upload() {
         fdata.append('hashtags', data.hashtags);
         fdata.append('video', vid);
         fdata.append('uploaded_by', localStorage.id);
+        fdata.append('type', data.type);
 
         const xhr = new XMLHttpRequest();
         xhr.open('POST', API_BASE_URL + '/content/video', true);
@@ -51,7 +53,7 @@ export default function Upload() {
             if (xhr.status === 200) {
                 const result = JSON.parse(xhr.responseText);
                 if (result.response.affectedRows > 0) {
-                    navigate('/videos');
+                    navigate(data.type === "ugc" ? '/videos' : '/courses');
                 } else {
                     console.error('Form submission failed:', result.message);
                 }
@@ -111,8 +113,14 @@ export default function Upload() {
                 <NavLink to={"/"} className="vup-heading-button"><X /></NavLink>
             </div>
             {vid === null ? <div className="upload-controls">
-                <div className='upload-thumb-ar' onClick={() => videoRef.current.click()}>
+                <div className='upload-thumb-ar' onClick={() => { videoRef.current.click(); setData({ ...data, "type": "course" });}}>
+                    <Book size={40} />
+                    <div style={{fontWeight: 500, fontSize: "20px"}}>New course video</div>
+                    <div className="upload-thumb-ar-warning">Please note that only the following video file formats are suitable: MP4, MKV, and MOV. Ensure your video is in one of these formats to avoid upload issues</div>
+                </div>
+                <div className='upload-thumb-ar' onClick={() => { videoRef.current.click(); setData({ ...data, "type": "ugc" });}}>
                     <Video size={40} />
+                    <div style={{fontWeight: 500, fontSize: "20px"}}>New UGC video</div>
                     <div className="upload-thumb-ar-warning">Please note that only the following video file formats are suitable: MP4, MKV, and MOV. Ensure your video is in one of these formats to avoid upload issues</div>
                 </div>
                 <input
@@ -127,6 +135,7 @@ export default function Upload() {
             </div>
                 :
                 <div className="middle">
+                    <div className="floating">{data.type}</div>
                     {vid && <div className="left">
                         <div className={"videos-ar"}>
                             <video src={URL.createObjectURL(vid)} className="video-thumbnail" controls />

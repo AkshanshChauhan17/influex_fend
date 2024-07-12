@@ -1,23 +1,28 @@
-import { Info, Settings, Upload, Video } from "react-feather";
+import { Book, Info, Settings, Slack, Upload, Users, Video } from "react-feather";
 
 export const nav_links = [{
-        title: "Details",
+        title: "Brands",
+        icon: <Slack size={20} strokeWidth={3} />,
+        link: "/brands"
+    },{
+        title: "Courses",
+        icon: <Book size={20} strokeWidth={3} />,
+        link: "/courses"
+    },{
+        title: "Creators",
+        icon: <Users size={20} strokeWidth={3} />,
+        link: "/creators"
+    },{
+        title: "Dashboard",
         icon: <Info size={20} strokeWidth={3} />,
         link: "/"
-    },
-    {
-        title: "My Videos",
-        icon: <Video size={20} strokeWidth={3}/>,
-        link: "/my videos"
-    },
-    {
+    },{
         title: "Upload",
         icon: <Upload size={20} strokeWidth={3} />,
         link: "/upload"
-    },
-    {
-        title: "Setting",
-        icon: <Settings size={20} strokeWidth={3} />,
-        link: "/setting"
+    },{
+        title: "Videos",
+        icon: <Video size={20} strokeWidth={3}/>,
+        link: "/videos"
     }
 ]

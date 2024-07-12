@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Router, Routes } from 'react-router-dom'
 import './App.css'
 import './dashStyle.css'
 import Home from './components/Home'
@@ -14,12 +14,17 @@ import DashNavigation from './components/Dashboard/Navigation'
 import { getRequest } from './functions/requests'
 import Login from './components/Login'
 import Home2 from './components/Home2'
+import OurServices from './components/OurServices'
+import Courses from './components/Courses'
+import Brands from './components/Dashboard/Brands'
+import Creators from './components/Dashboard/Creators'
 
 function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
   const [loginOpen, setLoginOpen] = useState(false);
   const [logKey, setLogKey] = useState("");
+  const [loginData, setLoginData] = useState();
 
   const verifyLoginKeyFun = ()=>{
     setIsLoading(true);
@@ -27,6 +32,7 @@ function App() {
       .then((e)=>{
         setIsLogin(e.status);
         if(e.status) {
+          setLoginData(e);
           localStorage.setItem("login_key", e.profile.login_token);
           localStorage.setItem("id", e.profile.id);
           localStorage.setItem("email", e.profile.email);
@@ -40,6 +46,7 @@ function App() {
       .then((e)=>{
         setIsLogin(e.status);
         if(e.status) {
+          setLoginData(e);
           localStorage.setItem("login_key", e.profile.login_token);
           localStorage.setItem("id", e.profile.id);
           localStorage.setItem("email", e.profile.email);
@@ -53,11 +60,14 @@ function App() {
         <Loader size={100} className='loader'/>
       </div>}
       <BrowserRouter>
-        <DashNavigation/>
+        <DashNavigation ld={loginData}/>
         <Routes>
           <Route path='/' element={<Dashboard />} />
-          <Route path='/my videos' element={<Videos />} />
-          <Route path='/upload' element={<Upload />} />
+          <Route path='/videos' element={<Videos ld={loginData} />} />
+          <Route path='/upload' element={<Upload ld={loginData} />} />
+          <Route path='/courses' element={<Courses ld={loginData} />} />
+          <Route path='/brands' element={<Brands ld={loginData} />} />
+          <Route path='/creators' element={<Creators ld={loginData} />} />
         </Routes>
       </BrowserRouter>
     </div>
@@ -68,16 +78,14 @@ function App() {
       {isLoading && <div className='loading-ar'>
         <Loader size={100} className='loader'/>
       </div>}
-      {
-        loginOpen && <Login loginKey={setLogKey} verifyLoginKey={verifyLoginKeyFun} openLogin={setLoginOpen} loginStatus={isLogin} />
-      }
       <BrowserRouter>
         <Navigation />
         <Routes>
           <Route path='/' element={<Home2 logOpenFun={setLoginOpen} />} />
           <Route path='/login'>
-            <Route path='creator' element={<Login />}></Route>
+            <Route path='creator' element={<Login loginKey={setLogKey} verifyLoginKey={verifyLoginKeyFun} openLogin={setLoginOpen} loginStatus={isLogin} />}></Route>
           </Route>
+          <Route path='/our services' element={<OurServices />} />
           <Route path='/inf-registration' element={<RegInfluencer />} />
           <Route path='/bnd-registration' element={<RegBrand />} />
         </Routes>

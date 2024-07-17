@@ -142,6 +142,141 @@
   transition-duration: 0.3s;
 }
 
+.notification-success {
+  background-color: rgb(0, 80, 0);
+  display: flex;
+  width: 400px;
+  height: 80px;
+  position: fixed;
+  gap: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  right: 20px;
+  top: 20px;
+  animation: notification 1s ease-in-out;
+  .left {
+    height: 80px;
+    width: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.7);
+    background-color: rgb(0, 113, 0);
+  }
+  .right {
+    display: grid;
+    align-content: center;
+    align-items: center;
+    .notif-heading {
+      font-size: 20px;
+      color: white;
+      text-transform: uppercase;
+    }
+    .notif-subheading {
+      color: rgba(255, 255, 255, 0.5);
+      text-transform: uppercase;
+      width: 280px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+.notification-error {
+  background-color: rgb(80, 0, 0);
+  display: flex;
+  width: 400px;
+  height: 80px;
+  position: fixed;
+  gap: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  right: 20px;
+  top: 20px;
+  animation: notification 1s ease-in-out;
+  .left {
+    height: 80px;
+    width: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.7);
+    background-color: rgb(113, 0, 0);
+  }
+  .right {
+    display: grid;
+    align-content: center;
+    align-items: center;
+    .notif-heading {
+      font-size: 20px;
+      color: white;
+      text-transform: uppercase;
+    }
+    .notif-subheading {
+      color: rgba(255, 255, 255, 0.5);
+      text-transform: uppercase;
+      width: 280px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+.notification-hidden {
+  background-color: rgb(0, 80, 0);
+  display: none;
+  width: 400px;
+  height: 80px;
+  position: fixed;
+  gap: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  right: 20px;
+  top: 20px;
+  animation: notification 1s ease-in-out;
+  .left {
+    height: 80px;
+    width: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.7);
+    background-color: rgb(0, 113, 0);
+  }
+  .right {
+    display: grid;
+    align-content: center;
+    align-items: center;
+    .notif-heading {
+      font-size: 20px;
+      color: white;
+      text-transform: uppercase;
+    }
+    .notif-subheading {
+      color: rgba(255, 255, 255, 0.5);
+      text-transform: uppercase;
+      width: 280px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+@keyframes notification {
+  from {
+    right: -400px;
+    opacity: 0;
+  } to {
+    right: 20px
+  }
+}
+
 @keyframes open {
   form {
     transform: rotate3d(1, 1, 1, 0deg);

@@ -28,7 +28,7 @@ export default function Creators({ld}) {
     };
 
     useEffect(()=>{
-      getRequest("/profile?type=creator", {})
+      getRequest("/profile?type=influencer", {})
         .then((e)=>{
           setAllData(e);
         })

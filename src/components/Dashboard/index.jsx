@@ -3,6 +3,7 @@ import ImageLoader from "../ImageLoader";
 import Card from "./Card";
 import { getRequest, putImageRequest, putRequest } from "../../functions/requests";
 import { Loader, Upload } from "react-feather";
+import Notification from "../Notifications";
 
 export default function Dashboard() {
     const uploadTapper = useRef(null);
@@ -10,6 +11,7 @@ export default function Dashboard() {
     const [data, setData] = useState({});
     const [urlImages, setUrlImages] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [notify, setNotify] = useState([false, false]);
 
     const handleUploadClick = ()=>{
         uploadTapper.current.click();
@@ -48,6 +50,9 @@ export default function Dashboard() {
             .then((e)=>{
                 if(e.affectedRows > 0) {
                     setLoading(false);
+                    setNotify([true, true]);
+                } else {
+                    setNotify([true, false]);
                 }
             })
     };
@@ -58,7 +63,10 @@ export default function Dashboard() {
     };
 
     return (
-        <div className="dashboard-pg">
+        <div className="dashboard-pg" onClick={()=>setNotify([false, false])}>
+            {
+                notify[0] ? <Notification status={notify[1]} message={notify[1] ? "Profile Update Successfully" : "Something went wrong, try again"} /> : null
+            }
             <div className="dash-head">
                 <div className="head-heading">DETAILS</div>
                 <div className="head-subheading">VIEW & EDIT YOUR INFORMATION</div>

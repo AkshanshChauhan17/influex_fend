@@ -18,6 +18,7 @@ import OurServices from './components/OurServices'
 import Courses from './components/Courses'
 import Brands from './components/Dashboard/Brands'
 import Creators from './components/Dashboard/Creators'
+import Notification from './components/Notifications'
 
 function App() {
   const [isLoading, setIsLoading] = useState(false);

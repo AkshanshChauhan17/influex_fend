@@ -25,12 +25,8 @@ const ImageLoader = ({ lowResSrc, highResSrc, alt, className, animate }) => {
     const img = new Image();
     img.src = highResSrc;
     img.onload = () => {
-      setSrc(highResSrc);
       setLoaded(true);
-    };
-    return ()=>{
-      img.src = "";
-      setLoaded(false);
+      setSrc(highResSrc);
     };
   }, [highResSrc]);
 

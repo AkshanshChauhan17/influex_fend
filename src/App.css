@@ -184,6 +184,21 @@
   }
 }
 
+.clickable:hover {
+  cursor: pointer;
+  opacity: 1 !important;
+}
+
+.center {
+  justify-content: center;
+}
+
+.flex-c {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .notification-error {
   background-color: rgb(80, 0, 0);
   display: flex;
@@ -315,6 +330,8 @@
   background-color: rgba(98, 0, 255, 0.747);
   color: rgb(255, 255, 255);
   border-radius: 10px;
+  width: calc(100% - 10px);
+  margin: auto auto;
 }
 
 .login-input:focus {
@@ -332,6 +349,8 @@
   font-size: 20px;
   background: none;
   border-radius: 10px;
+  width: calc(100% - 40px);
+  margin: auto auto;
   background-color: rgb(3, 0, 51);
 }
 

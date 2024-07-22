@@ -83,7 +83,7 @@ export default function Dashboard() {
                 <div className="user-data-edit-ar">
                     {
                         Object.keys(data).map((e, i)=>{
-                            if(e==="profile_image_url") {
+                            if(e==="profile_image_url" || e==="type") {
                                 return null
                             }
                             return <div className="user-data-edit" key={i}>

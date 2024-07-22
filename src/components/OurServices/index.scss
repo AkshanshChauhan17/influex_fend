@@ -15,8 +15,10 @@
             }
             .sub-title {
                 font-size: 16px;
-                color: rgba(255, 255, 255, 0.8);
+                color: rgba(255, 255, 255, 0.3);
                 text-align: center;
+                font-weight: 100;
+                font-family: Poppins;
             }
             .links {
                 .link {
@@ -124,125 +126,129 @@
     }
 }
 
-.our-services {
-    padding: 80px 20px;
-    background: linear-gradient(45deg, rgb(31, 31, 31), rgb(0, 0, 0));
-    .courses {
-        display: grid;
-        gap: 40px;
-        .popular {
+@media (max-width: 700px) {
+    .our-services {
+        padding: 80px 20px;
+        background: linear-gradient(45deg, rgb(31, 31, 31), rgb(0, 0, 0));
+        .courses {
             display: grid;
-            gap: 80px;
-            .title {
-                font-size: 30px;
-                font-weight: 700;
-                margin-top: 0px;
-                text-align: center;
-            }
-            .sub-title {
-                font-size: 16px;
-                color: rgba(255, 255, 255, 0.8);
-                text-align: center;
-            }
-            .links {
-                .link {
-                    display: flex;
-                    color: white;
-                    align-items: center;
-                    text-decoration: none;
-                    font-size: 20px;
-                    gap: 5px;
-                    transition-duration: 0.3s;
-                    width: fit-content;
-                    margin-left: auto;
-                }
-                .link:hover {
-                    gap: 10px;
-                    color: greenyellow;
-                }
-            }
-            .popular-courses::-webkit-scrollbar {
-                display: none;
-            }
-            .popular-courses {
+            gap: 40px;
+            .popular {
                 display: grid;
-                grid-template-columns: auto;
-                gap: 20px;
-                width: calc(100vw - 40px);
-                overflow-x: scroll;
-                padding: 0px 2px;
-                .course {
-                    margin: 2px 0px;
-                    outline: 1px solid rgba(255, 255, 255, 0.2);
-                    border-radius: 10px;
-                    position: relative;
-                    height: 250px;
-                    display: grid;
-                    align-content: end;
-                    background-repeat: no-repeat;
-                    background-size: cover;
-                    overflow: hidden;
-                    transition-duration: 0.3s;
-                    cursor: pointer;
-                    &::after {
-                        content: '';
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        right: 0;
-                        bottom: 0;
-                        background: linear-gradient(0deg, rgb(0, 0, 0), rgba(0, 0, 0)); // You can change this to any color if needed
-                        opacity: 0.8; // Adjust the opacity to control brightness
-                        pointer-events: none;
-                        z-index: 0;
+                gap: 80px;
+                .title {
+                    font-size: 30px;
+                    font-weight: 700;
+                    margin-top: 0px;
+                    text-align: center;
+                }
+                .sub-title {
+                    font-size: 16px;
+                    color: rgba(255, 255, 255, 0.3);
+                    text-align: center;
+                    font-weight: 100;
+                    font-family: Poppins;
+                }
+                .links {
+                    .link {
+                        display: flex;
+                        color: white;
+                        align-items: center;
+                        text-decoration: none;
+                        font-size: 20px;
+                        gap: 5px;
+                        transition-duration: 0.3s;
+                        width: fit-content;
+                        margin-left: auto;
                     }
-                    .course-data {
-                        position: relative;
-                        z-index: 20;
-                        padding: 20px;
-                        height: fit-content;
-                        .title {
-                            font-size: 24px;
-                            font-weight: 100;
-                            text-align: left;
-                        }
-                        .subtitle {
-                            font-size: 12px;
-                            margin-bottom: 20px;
-                            color: rgba(210, 210, 210, 0.749);
-                        }
-                        .bottom {
-                            display: flex;
-                            align-items: center;
-                            justify-content: space-between;
-                            .rating {
-                                display: flex;
-                                gap: 2;
-                                font-size: 16px;
-                            }
-                            .iconn {
-                                padding: 10px;
-                                border-radius: 10px;
-                                width: 20px;
-                                height: 20px;
-                                background-color: rgba(255, 255, 255, 0.1);
-                                cursor: pointer;
-                            }
-                        }
+                    .link:hover {
+                        gap: 10px;
+                        color: greenyellow;
                     }
                 }
-                .course:hover {
-                    &::after {
-                        content: '';
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        right: 0;
-                        bottom: 0;
-                        background: linear-gradient(0deg, rgb(0, 0, 0), rgba(0, 0, 0, 0)); // You can change this to any color if needed
-                        opacity: 0.8; // Adjust the opacity to control brightness
-                        pointer-events: none;
-                        z-index: 0;
+                .popular-courses::-webkit-scrollbar {
+                    display: none;
+                }
+                .popular-courses {
+                    display: grid;
+                    grid-template-columns: auto;
+                    gap: 20px;
+                    width: calc(100vw - 40px);
+                    overflow-x: scroll;
+                    padding: 0px 2px;
+                    .course {
+                        margin: 2px 0px;
+                        outline: 1px solid rgba(255, 255, 255, 0.2);
+                        border-radius: 10px;
+                        position: relative;
+                        height: 250px;
+                        display: grid;
+                        align-content: end;
+                        background-repeat: no-repeat;
+                        background-size: cover;
+                        overflow: hidden;
+                        transition-duration: 0.3s;
+                        cursor: pointer;
+                        &::after {
+                            content: '';
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            right: 0;
+                            bottom: 0;
+                            background: linear-gradient(0deg, rgb(0, 0, 0), rgba(0, 0, 0)); // You can change this to any color if needed
+                            opacity: 0.8; // Adjust the opacity to control brightness
+                            pointer-events: none;
+                            z-index: 0;
+                        }
+                        .course-data {
+                            position: relative;
+                            z-index: 20;
+                            padding: 20px;
+                            height: fit-content;
+                            .title {
+                                font-size: 24px;
+                                font-weight: 100;
+                                text-align: left;
+                            }
+                            .subtitle {
+                                font-size: 12px;
+                                margin-bottom: 20px;
+                                color: rgba(210, 210, 210, 0.749);
+                            }
+                            .bottom {
+                                display: flex;
+                                align-items: center;
+                                justify-content: space-between;
+                                .rating {
+                                    display: flex;
+                                    gap: 2;
+                                    font-size: 16px;
+                                }
+                                .iconn {
+                                    padding: 10px;
+                                    border-radius: 10px;
+                                    width: 20px;
+                                    height: 20px;
+                                    background-color: rgba(255, 255, 255, 0.1);
+                                    cursor: pointer;
+                                }
+                            }
+                        }
+                    }
+                    .course:hover {
+                        &::after {
+                            content: '';
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            right: 0;
+                            bottom: 0;
+                            background: linear-gradient(0deg, rgb(0, 0, 0), rgba(0, 0, 0, 0)); // You can change this to any color if needed
+                            opacity: 0.8; // Adjust the opacity to control brightness
+                            pointer-events: none;
+                            z-index: 0;
+                        }
                     }
                 }
             }

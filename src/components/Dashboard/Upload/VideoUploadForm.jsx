@@ -59,7 +59,7 @@ const VideoUploadForm = ({uploadPercentage, vpSet, setV, setDt, v}) => {
         required
       />
       </div>
-      :
+      : null
       }
     </form>
   );

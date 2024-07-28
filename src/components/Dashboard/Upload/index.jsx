@@ -17,7 +17,8 @@ export default function Upload() {
         video: null,
         hashtags: "",
         description: "",
-        type: ""
+        type: "",
+        price: 0
     });
 
     const handleChange = (e) => {
@@ -38,6 +39,7 @@ export default function Upload() {
         fdata.append('video', vid);
         fdata.append('uploaded_by', localStorage.id);
         fdata.append('type', data.type);
+        fdata.append('type', data.price);
 
         const xhr = new XMLHttpRequest();
         xhr.open('POST', API_BASE_URL + '/content/video', true);
@@ -161,6 +163,10 @@ export default function Upload() {
                 <label className="vup-label">
                     DESCRIPTION
                     <textarea required className="vup-textarea" placeholder="..." name="description" value={data.description} onChange={handleChange} />
+                </label>
+                <label className="vup-label">
+                    PRICE
+                    <input type="tel" name="price" value={data.price} onChange={handleChange} />
                 </label>
             </div>}
             {vid !== null && <div className="vup-bottom-controls">

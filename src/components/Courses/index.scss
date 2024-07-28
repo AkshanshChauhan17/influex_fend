@@ -1,0 +1,209 @@
+.search-filter-ar {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    .search-ar {
+        display: flex;
+        gap: 10px;
+        .search-input {
+            background: none;
+            background-color: white;
+            border: 2px solid gray;
+            color: rgb(30, 30, 30);
+            font-size: 20px;
+            border-radius: 10px;
+        }
+        .search-btn {
+            width: 20px;
+            height: 20px;
+            padding: 10px;
+            background-color: rgb(113, 0, 252);
+            color: rgb(255, 255, 255);
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        .search-btn:hover {
+            background-color: rgb(92, 0, 203);
+            color: rgb(255, 255, 255);
+        }
+    }
+}
+
+.filter-dropdown {
+    font-size: 16px;
+    .selection {
+        background-color: rgb(245, 245, 245);
+        padding: 8px 20px;
+        width: 200px;
+        position: relative;
+        display: grid;
+    }
+    .selection::before {
+        content: "Category";
+        font-weight: 700;
+        position: absolute;
+        left: -115px;
+        width: fit-content;
+        outline: 1px solid rgb(207, 207, 207);
+        padding: 8px 20px;
+    }
+    .options {
+        display: grid;
+        position: absolute;
+        background-color: white;
+        z-index: 1000;
+        gap: 0px;
+        cursor: pointer;
+        width: 240px;
+        overflow: hidden;
+        transition-duration: 0.3s;
+        height: 0px;
+    }
+    .option {
+        padding: 4px 20px;
+    }
+    .option:hover {
+        background-color: rgb(113, 0, 252);
+        color: white;
+    }
+}
+
+.filter-dropdown:hover {
+    .options {
+        height: max-content;
+    }
+}
+
+.free {
+    position: absolute;
+    background-color: rgb(0, 185, 0);
+    color: white;
+    padding: 10px 10px;
+    font-size: 12px;
+    font-weight: 100;
+    left: 20px;
+}
+
+.paid {
+    position: absolute;
+    background-color: rgb(113, 0, 252);
+    color: white;
+    padding: 10px 10px;
+    font-size: 12px;
+    font-weight: 100;
+    left: 20px;
+}
+
+.locked {
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    display: flex;
+    .locked-icon {
+        background-color: white;
+        padding: 20px;
+        border-radius: 50px;
+        outline: 4px solid rgba(0, 0, 0, 0.2);
+        transition-duration: 0.2s;
+        cursor: pointer;
+    }
+    .locked-icon:hover {
+        outline: 20px solid rgba(0, 0, 0, 0.5);
+    }
+}
+
+.videos-heading {
+    padding: 10px 0px;
+    font-size: 20px;
+    margin: 10px 0px;
+    border-bottom: 1px solid gainsboro;
+}
+
+.video-buy {
+    position: absolute;
+    z-index: 5000;
+    background-color: white;
+    padding: 80px;
+    display: grid;
+    gap: 80px;
+    top: 0;
+    left: 0;
+    width: calc(100vw - 160px);
+    height: calc(100vh - 160px);
+    align-content: start;
+    * {
+        outline: 0px solid red;
+    }
+    .video-buy-head {
+        display: flex;
+        justify-content: space-between;
+        color: rgb(89, 0, 255);
+        .video-buy-title {
+            font-size: 20px;
+            color: rgb(89, 0, 255);
+        }
+        .close {
+            cursor: pointer;
+        }
+    }
+    .coursee-ar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        .left {
+            flex: 1;
+            display: grid;
+            max-width: 500px;
+            align-content: start;
+            gap: 10px;
+            text-wrap: wrap;
+            word-break: break-all;
+            .course-title {
+                font-size: 30px;
+                font-weight: 800;
+                line-height: 40px;
+                margin-bottom: 10px;
+            }
+            .video-image {
+                height: 200px;
+            }
+            .course-hashtags {
+                display: flex;
+                gap: 4px;
+                .hashtag {
+                    padding: 4px 16px;
+                    border-radius: 20px;
+                    color: rgb(0, 0, 0);
+                    background-color: rgb(210, 210, 210);
+                }
+            }
+        }
+        .right {
+            flex: 1;
+            display: grid;
+            align-content: center;
+            gap: 10px;
+            background-color: darkblue;
+            .course-price {
+                color: rgb(255, 255, 255);
+                padding: 20px;
+                font-size: 40px;
+            }
+            .course-request-btn {
+                background-color: rgb(89, 0, 255);
+                color: white;
+                padding: 20px;
+                font-size: 20px;
+                cursor: pointer;
+                gap: 10px;
+                display: flex;
+                align-items: center;
+            }
+            .course-request-btn:hover {
+                gap: 20px;
+            }
+        }
+    }
+}

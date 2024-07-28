@@ -30,8 +30,7 @@ export default function Navigation() {
         <ScrollPercentage shDef={setHide} />
         <div className="right-links">
             <Link to={"/"} className={location.pathname==="/" ? "active-link" : "link"}>Home</Link>
-            <Link to={"/our services"} className={location.pathname==="/our%20services" ? "active-link" : "link"}>Our Services</Link>
-            <Link to={"/influex club"} className={location.pathname==="/influex%20club" ? "active-link" : "link"}>Influex Club</Link>
+            <Link to={"/courses"} className={location.pathname==="/courses" ? "active-link" : "link"}>Courses</Link>
             {
                 isOnline ? <div className="online"><Wifi />Online</div>
                 : <div className="offline"><WifiOff />Offline</div>

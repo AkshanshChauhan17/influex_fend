@@ -61,7 +61,13 @@ export default function OurServices() {
             <div className="popular">
                 <div className="head">
                     <div className="title">Learn with Influex</div>
-                    <div className="sub-title">Empowering You with Knowledge and Skills </div></div>
+                    <div className="sub-title">Empowering You with Knowledge and Skills </div>
+                </div>
+                <hr />
+                <div className="subheading">
+                    <div className="titl">Popular Courses</div>
+                    <div className="subtitle">Highly demanding courses</div>
+                </div>
                 <div className="popular-courses">
                     {
                         coruses_list.map((e, i)=>{
@@ -78,9 +84,51 @@ export default function OurServices() {
                         })
                     }
                 </div>
-                <div className="links">
-                    <Link className="link" to={"/login"}>Explore <ArrowRight /></Link>
+                <hr />
+                <div className="subheading">
+                    <div className="titl">New Arrived</div>
+                    <div className="subtitle">Latest uploaded courses</div>
                 </div>
+                <div className="popular-courses">
+                    {
+                        coruses_list.map((e, i)=>{
+                            return <div className="course" key={i} style={{backgroundImage: `url(${e.media})`}}>
+                                <div className="course-data">
+                                    <div className="title">{e.title}</div>
+                                    <div className="subtitle">{e.format}</div>
+                                    <div className="bottom">
+                                        <div className="rating"><Star fill="white" strokeWidth={0} size={22} />{e.rating}</div>
+                                        <Play className="iconn" fill="white" strokeWidth={0}></Play>
+                                    </div>
+                                </div>
+                            </div>
+                        })
+                    }
+                </div>
+                <hr />
+                <div className="subheading">
+                    <div className="titl">All Courses</div>
+                    <div className="subtitle">Explore our all courses</div>
+                </div>
+                <div className="all-popular-courses">
+                    {
+                        coruses_list.map((e, i)=>{
+                            return <div className="course" key={i} style={{backgroundImage: `url(${e.media})`}}>
+                                <div className="course-data">
+                                    <div className="title">{e.title}</div>
+                                    <div className="subtitle">{e.format}</div>
+                                    <div className="bottom">
+                                        <div className="rating"><Star fill="white" strokeWidth={0} size={22} />{e.rating}</div>
+                                        <Play className="iconn" fill="white" strokeWidth={0}></Play>
+                                    </div>
+                                </div>
+                            </div>
+                        })
+                    }
+                </div>
+                {/* <div className="links">
+                    <Link className="link" to={"/login"}>Explore <ArrowRight /></Link>
+                </div> */}
             </div>
         </div>
     </div>

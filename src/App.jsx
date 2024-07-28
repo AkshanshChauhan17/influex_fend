@@ -19,6 +19,7 @@ import Courses from './components/Courses'
 import Brands from './components/Dashboard/Brands'
 import Creators from './components/Dashboard/Creators'
 import Notification from './components/Notifications'
+import Footer from './components/Footer'
 
 function App() {
   const [isLoading, setIsLoading] = useState(false);
@@ -85,10 +86,11 @@ function App() {
         <Routes>
           <Route path='/' element={<Home2 logOpenFun={setLoginOpen} />} />
           <Route path='/login' element={<Login loginKey={setLogKey} verifyLoginKey={verifyLoginKeyFun} openLogin={setLoginOpen} loginStatus={isLogin} />} />
-          <Route path='/our services' element={<OurServices />} />
+          <Route path='/courses' element={<OurServices />} />
           <Route path='/inf-registration' element={<RegInfluencer />} />
           <Route path='/bnd-registration' element={<RegBrand />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </div>
   )

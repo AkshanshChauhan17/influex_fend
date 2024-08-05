@@ -39,7 +39,8 @@ export default function Upload() {
         fdata.append('video', vid);
         fdata.append('uploaded_by', localStorage.id);
         fdata.append('type', data.type);
-        fdata.append('type', data.price);
+        fdata.append('price', data.price);
+        fdata.append('description', data.description)
 
         const xhr = new XMLHttpRequest();
         xhr.open('POST', API_BASE_URL + '/content/video', true);

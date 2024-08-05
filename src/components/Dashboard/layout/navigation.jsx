@@ -1,4 +1,4 @@
-import { Book, Info, Settings, Slack, Upload, Users, Video } from "react-feather";
+import { Book, Info, Plus, Settings, Slack, Upload, Users, Video } from "react-feather";
 
 export const nav_links = [{
         title: "Dashboard",
@@ -24,5 +24,9 @@ export const nav_links = [{
         title: "Videos",
         icon: <Video size={20} strokeWidth={3}/>,
         link: "/videos"
+    },{
+        title: "Course Requests",
+        icon: <Plus size={20} strokeWidth={3} />,
+        link: "/course_requests"
     }
 ]

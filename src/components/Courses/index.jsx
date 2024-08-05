@@ -1,19 +1,20 @@
 import { useEffect, useRef, useState } from "react"
 import ImageLoader from "../ImageLoader";
-import { API_BASE_URL, deleteRequest, getRequest } from "../../functions/requests";
-import { ArrowRight, Lock, Search, X } from "react-feather";
+import { API_BASE_URL, deleteRequest, getRequest, postRequest } from "../../functions/requests";
+import { ArrowRight, Loader, Lock, Search, X } from "react-feather";
 import "./index.scss";
 
 export default function Courses({ld}) {
     const [allVideosData, setAllVideosData] = useState([]);
     const [videoPlayed, setVideoPlayed] = useState();
     const [removed, setRemoved] = useState(1);
-    const [SelectedFilter, setSelectedFilter] = useState("None");
-
     const [searchQuery, setSearchQuery] = useState('');
     const [filteredData, setFilteredData] = useState([]);
+    const [SelectedFilter, setSelectedFilter] = useState("None");
     const [isCourseRequested, setIsCourseRequested] = useState(false);
     const [selectedCourseDt, setSelectedCourseDt] = useState({});
+    const [reqLoad, setReqLoad] = useState(false);
+    const [checkStatus, setCheckStatue] = useState(false);
 
     const [controlEvents, setControlEvents] = useState({
         play: false,
@@ -52,12 +53,26 @@ export default function Courses({ld}) {
     const handleRequestCancel = ()=>{
         setIsCourseRequested(false);
         setSelectedCourseDt({});
-    }
+    };
+
+    const handleDoRequest = ()=> {
+        setReqLoad(true);
+        postRequest(`/content/new_request`, {course_id: selectedCourseDt.id, user_id: localStorage.id})
+            .finally(()=>setReqLoad(false))
+    };
 
     function BuyCourse() {
+        const [reqStatus, setReqStatus] = useState(null);
+
         if(!isCourseRequested || !selectedCourseDt) {
             return null
         }
+
+        useEffect(()=>{
+            getRequest(`/content/request/verify?course_id=${selectedCourseDt.id}&user_id=${localStorage.id}`)
+                .then((e)=>setReqStatus(e.request_status));
+        }, [isCourseRequested])
+
         return <div className="video-buy">
             <div className="video-buy-head">
                 <div className="video-buy-title">
@@ -75,18 +90,36 @@ export default function Courses({ld}) {
                 </div>
                 <div className="right">
                     <div className="course-price">₹{selectedCourseDt.price}</div>
-                    <div className="course-request-btn">Request Course <ArrowRight /></div>
+                    {
+                        reqLoad ? 
+                        <div className="course-request-btn">Wait <Loader className="loader" /></div>
+                            :
+                        reqStatus!==null ?
+                        <div className="course-request-btn">{reqStatus}</div>
+                            :
+                        <div className="course-request-btn" onClick={handleDoRequest}>Request Course <ArrowRight /></div>
+                    }
                 </div>
             </div>
         </div>
-    }
+    };
 
     const handleRequestCourse = (dt)=>{
         setIsCourseRequested(true);
         setSelectedCourseDt(dt);
-    }
+    };
 
-    console.log(selectedCourseDt);
+    const CheckStatus = ({ee})=>{
+        const [status, setStatus] = useState(false);
+        useEffect(()=>{
+            getRequest(`/content/request/verify?course_id=${ee.id}&user_id=${localStorage.id}`)
+            .then((f)=>setStatus(f))
+        }, [])
+        if(status.request_status==="Accepted") {
+            return <video src={API_BASE_URL + "/stream?url=" + ee.video_url} className="video-thumbnail" autoPlay controls />;
+        }
+        return <div className="video-thumbnail locked"><Lock className="locked-icon" onClick={()=>handleRequestCourse(ee)} /></div>;
+    };
 
     return <div className="dashboard-pg">
         <div className="dash-head">
@@ -120,9 +153,9 @@ export default function Courses({ld}) {
                             {
                                 videoPlayed!==i ? <ImageLoader className="video-thumbnail play" lowResSrc={"https://i.pinimg.com/originals/1f/2d/f8/1f2df8fad7e9bfcb18d9d553f8fc259b.gif"} highResSrc={API_BASE_URL + "/thumbnail?url=" + e.video_url + "&r=500"}></ImageLoader>
                                 :
-                                e.price!==0 ? <div className="video-thumbnail locked"><Lock className="locked-icon" onClick={()=>handleRequestCourse(e)} /></div>
+                                e.price!==0 ? <CheckStatus ee={e}/>
                                     :
-                                <video src={API_BASE_URL + "/stream?url=" + e.video_url} className="video-thumbnail" autoPlay controls onPause={()=>handlePause} />
+                                <video src={API_BASE_URL + "/stream?url=" + e.video_url} className="video-thumbnail" autoPlay controls />
                             }
                             <div className={videoPlayed===i ? "video-info-ar-hidden" : "video-info-ar"}>
                                 {new Date(e.created_on).toDateString() === new Date(Date.now()).toDateString() && <div className="latest">New</div>}

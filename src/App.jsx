@@ -20,6 +20,7 @@ import Brands from './components/Dashboard/Brands'
 import Creators from './components/Dashboard/Creators'
 import Notification from './components/Notifications'
 import Footer from './components/Footer'
+import CourseRequest from './components/Dashboard/CourseRequests'
 
 function App() {
   const [isLoading, setIsLoading] = useState(false);
@@ -71,6 +72,7 @@ function App() {
           <Route path='/courses' element={<Courses ld={loginData} />} />
           <Route path='/brands' element={<Brands ld={loginData} />} />
           <Route path='/creators' element={<Creators ld={loginData} />} />
+          <Route path='/course_requests' element={<CourseRequest ld={loginData} />} />
         </Routes>
       </BrowserRouter>
     </div>

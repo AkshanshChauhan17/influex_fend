@@ -65,6 +65,26 @@ export const putRequest = async(endpoint, data) => {
     }
 };
 
+export const patchRequest = async(endpoint, data) => {
+    try {
+        const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        });
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const responseData = await response.json();
+        return responseData;
+    } catch (error) {
+        console.error('Error with PATCH request:', error);
+        throw error;
+    }
+};
+
 export const deleteRequest = async(endpoint) => {
     try {
         const response = await fetch(`${API_BASE_URL}${endpoint}`, {

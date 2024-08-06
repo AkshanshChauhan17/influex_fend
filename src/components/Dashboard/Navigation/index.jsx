@@ -24,7 +24,7 @@ export default function DashNavigation({ld}) {
             </div>
             {menuOpen ? <ChevronRight onClick={()=>setMenuOpen(false)} className="nav-puller" /> : <ChevronLeft onClick={()=>setMenuOpen(true)} className="nav-puller" />}
             <hr className="fade-70" />
-            {ld.profile.type==="Admin" ? <div className="nav-links">
+            {ld.profile.type==="admin" ? <div className="nav-links">
                     {
                         nav_links_admin.map((e, i)=>{
                             return <NavLink to={e.link} className={isFocused(e.link) ? "active-nav-link" : "nav-link"} onClick={()=>setActive(i + 1)} key={i}>{e.icon} {e.title}</NavLink>

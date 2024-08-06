@@ -116,7 +116,7 @@ export default function Upload({ld}) {
                 <NavLink to={"/"} className="vup-heading-button"><X /></NavLink>
             </div>
             {vid === null ? <div className="upload-controls">
-                {ld.profile.type==="Admin" && <div className='upload-thumb-ar' onClick={() => { videoRef.current.click(); setData({ ...data, "type": "course" });}}>
+                {ld.profile.type==="admin" && <div className='upload-thumb-ar' onClick={() => { videoRef.current.click(); setData({ ...data, "type": "course" });}}>
                     <Book size={40} />
                     <div style={{fontWeight: 500, fontSize: "20px"}}>New course video</div>
                     <div className="upload-thumb-ar-warning">Please note that only the following video file formats are suitable: MP4, MKV, and MOV. Ensure your video is in one of these formats to avoid upload issues</div>

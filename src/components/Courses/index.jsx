@@ -1,11 +1,13 @@
 import { useEffect, useRef, useState } from "react"
 import ImageLoader from "../ImageLoader";
 import { API_BASE_URL, deleteRequest, getRequest, postRequest } from "../../functions/requests";
-import { ArrowRight, Loader, Lock, Search, X } from "react-feather";
+import { ArrowRight, Loader, Lock, Search, Video, Watch, X } from "react-feather";
 import "./index.scss";
+import { Link } from "react-router-dom";
 
 export default function Courses({ld}) {
     const [allVideosData, setAllVideosData] = useState([]);
+    const [newArriveData, setNewArriveData] = useState([]);
     const [videoPlayed, setVideoPlayed] = useState();
     const [removed, setRemoved] = useState(1);
     const [searchQuery, setSearchQuery] = useState('');
@@ -45,6 +47,11 @@ export default function Courses({ld}) {
 
     useEffect(()=>{
       getRequest("/content/new?type=course", {})
+        .then((e)=>{
+          setNewArriveData(e);
+        })
+        
+    getRequest("/content?type=course", {})
         .then((e)=>{
           setAllVideosData(e);
         })
@@ -121,12 +128,95 @@ export default function Courses({ld}) {
         return <div className="video-thumbnail locked"><Lock className="locked-icon" onClick={()=>handleRequestCourse(ee)} /></div>;
     };
 
+    const CheckStatusTwo = ({ee})=>{
+        const [status, setReqStatus] = useState(null);
+        const [innerLoad, setInnerLoad] = useState(false);
+        const [reqDone, setReqDone] = useState(1);
+
+        const handleInnerReq = ()=>{
+            setReqDone(reqDone + 1);
+            setInnerLoad(true)
+            postRequest(`/content/new_request`, {course_id: ee.id, user_id: localStorage.id})
+                .finally(()=>setInnerLoad(false))
+        }
+
+        useEffect(()=>{
+            getRequest(`/content/request/verify?course_id=${ee.id}&user_id=${localStorage.id}`)
+                .then((e)=>setReqStatus(e));
+        }, [ee, reqDone]);
+
+            if(status===null) {
+                return <div className="button-buy"><Lock className="locked-icon" onClick={()=>handleRequestCourse(ee)} /></div>;
+            } else {
+
+            if(status.request_status==="Accepted") {
+                return <Link to={"/course/" + ee.id} className="button-buy">View</Link>;
+            }
+            
+            if(status.request_status==="Requested") {
+                return <div className="button-buy requested">Requested</div>;
+            }
+            
+            if(status.request_status==="Declined") {
+                return <div className="button-buy declined">Declined</div>;
+            }
+
+            return <div className="button-buy declined" onClick={handleInnerReq}>{innerLoad ? <Loader className="loader" /> : <Lock className="locked-icon" />}</div>;
+        }
+    };
+
+    function TableCard({d}) {
+        return <div className="table-card">
+            <ImageLoader className="table-card-dp" lowResSrc="https://i.pinimg.com/originals/1f/2d/f8/1f2df8fad7e9bfcb18d9d553f8fc259b.gif" highResSrc={`${API_BASE_URL}/thumbnail?url=${d.video_url}&r=150`} />
+            <div className="mid">
+                <div className="mid-title">
+                    {d.title}
+                </div>
+                <div className="meta">
+                    <div className="meta-data"><b>Added on:</b> {new Date(d.created_on).toDateString()}</div>
+                    {d.price<=0 ? <div className="is_free">FREE</div> : <div className="is_paid">₹{d.price}</div> }
+                </div>
+            </div>
+            <div className="controls">
+                {
+                    d.price<=0 ? <Link to={"/course/" + d.id} className="button-buy">View</Link> : <CheckStatusTwo ee={d}/>
+                }
+            </div>
+        </div>
+    };
+
     return <div className="dashboard-pg">
         <div className="dash-head">
             <div className="head-heading">Courses</div>
             <div className="head-subheading">VIEW & EDIT COURSES</div>
         </div>
         <div className="dash-videos-content">
+            <BuyCourse />
+            <div className="videos-heading">New Arrived</div>
+            <div className="videos-section">
+                {
+                    newArriveData.length===0 ? <div style={{margin: "auto"}}>No Video Found!</div>
+                    : newArriveData.map((e, i)=>{
+                        return <div className={`videos-ar over-hidden ${e.type + "-video"}`} key={i} onClick={()=>setVideoPlayed(i)}>
+                            {
+                                videoPlayed!==i ? <ImageLoader className="video-thumbnail play" lowResSrc={"https://i.pinimg.com/originals/1f/2d/f8/1f2df8fad7e9bfcb18d9d553f8fc259b.gif"} highResSrc={API_BASE_URL + "/thumbnail?url=" + e.video_url + "&r=300"}></ImageLoader>
+                                :
+                                e.price!==0 ? <CheckStatus ee={e}/>
+                                    :
+                                <video src={API_BASE_URL + "/stream?url=" + e.video_url} className="video-thumbnail" autoPlay controls />
+                            }
+                            <div className={videoPlayed===i ? "video-info-ar-hidden" : "video-info-ar"}>
+                                {new Date(e.created_on).toDateString() === new Date(Date.now()).toDateString() && <div className="latest">New</div>}
+                                {e.price!==0 ? <div className="paid">₹{e.price}</div> : <div className="free">Free</div>}
+                                <div className="video-title">{e.title}</div>
+                                <div className="video-subtitle">{e.type} | {new Date(e.created_on).toDateString()}</div>
+                                {ld && ld.profile.type==="admin" && <div className="remove" onClick={()=>handleRemoveVideo(e.id)}><X /></div>}
+                            </div>
+                        </div>
+                    })
+                }
+            </div>
+            <div className="videos-heading">All Videos</div>
             <div className="search-filter-ar">
                 <div className="search-ar">
                     <input type="search" className="search-input" placeholder="Search..." value={searchQuery} onChange={e => setSearchQuery(e.target.value)}/>
@@ -143,28 +233,11 @@ export default function Courses({ld}) {
                     </div>
                 </div>
             </div>
-            <BuyCourse />
-            <div className="videos-heading">New Arrived</div>
-            <div className="videos-section">
+            <div className="videos-section-all">
                 {
-                    allVideosData.length===0 ? <div style={{margin: "auto"}}>No Video Found!</div>
+                    filteredData.length===0 ? <div style={{margin: "auto"}}>No Video Found!</div>
                     : filteredData.map((e, i)=>{
-                        return <div className={`videos-ar over-hidden ${e.type + "-video"}`} key={i} onClick={()=>setVideoPlayed(i)}>
-                            {
-                                videoPlayed!==i ? <ImageLoader className="video-thumbnail play" lowResSrc={"https://i.pinimg.com/originals/1f/2d/f8/1f2df8fad7e9bfcb18d9d553f8fc259b.gif"} highResSrc={API_BASE_URL + "/thumbnail?url=" + e.video_url + "&r=500"}></ImageLoader>
-                                :
-                                e.price!==0 ? <CheckStatus ee={e}/>
-                                    :
-                                <video src={API_BASE_URL + "/stream?url=" + e.video_url} className="video-thumbnail" autoPlay controls />
-                            }
-                            <div className={videoPlayed===i ? "video-info-ar-hidden" : "video-info-ar"}>
-                                {new Date(e.created_on).toDateString() === new Date(Date.now()).toDateString() && <div className="latest">New</div>}
-                                {e.price!==0 ? <div className="paid">₹{e.price}</div> : <div className="free">Free</div>}
-                                <div className="video-title">{e.title}</div>
-                                <div className="video-subtitle">{e.type} | {new Date(e.created_on).toDateString()}</div>
-                                {ld && ld.profile.type==="admin" && <div className="remove" onClick={()=>handleRemoveVideo(e.id)}><X /></div>}
-                            </div>
-                        </div>
+                        return <TableCard d={e} key={i} />
                     })
                 }
             </div>

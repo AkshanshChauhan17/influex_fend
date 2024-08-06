@@ -5,7 +5,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import { API_BASE_URL } from "../../../functions/requests";
 
-export default function Upload() {
+export default function Upload({ld}) {
     const [uploadPercentage, setUploadPercentage] = useState(0);
     const [isLoad, setIsLoad] = useState(false);
     const navigate = useNavigate();
@@ -116,11 +116,11 @@ export default function Upload() {
                 <NavLink to={"/"} className="vup-heading-button"><X /></NavLink>
             </div>
             {vid === null ? <div className="upload-controls">
-                <div className='upload-thumb-ar' onClick={() => { videoRef.current.click(); setData({ ...data, "type": "course" });}}>
+                {ld.profile.type==="Admin" && <div className='upload-thumb-ar' onClick={() => { videoRef.current.click(); setData({ ...data, "type": "course" });}}>
                     <Book size={40} />
                     <div style={{fontWeight: 500, fontSize: "20px"}}>New course video</div>
                     <div className="upload-thumb-ar-warning">Please note that only the following video file formats are suitable: MP4, MKV, and MOV. Ensure your video is in one of these formats to avoid upload issues</div>
-                </div>
+                </div>}
                 <div className='upload-thumb-ar' onClick={() => { videoRef.current.click(); setData({ ...data, "type": "ugc" });}}>
                     <Video size={40} />
                     <div style={{fontWeight: 500, fontSize: "20px"}}>New UGC video</div>

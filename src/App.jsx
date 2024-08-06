@@ -21,6 +21,7 @@ import Creators from './components/Dashboard/Creators'
 import Notification from './components/Notifications'
 import Footer from './components/Footer'
 import CourseRequest from './components/Dashboard/CourseRequests'
+import CourseVideo from './components/Courses/courseVideo'
 
 function App() {
   const [isLoading, setIsLoading] = useState(false);
@@ -70,6 +71,7 @@ function App() {
           <Route path='/videos' element={<Videos ld={loginData} />} />
           <Route path='/upload' element={<Upload ld={loginData} />} />
           <Route path='/courses' element={<Courses ld={loginData} />} />
+          <Route path='/course/:id' element={<CourseVideo ld={loginData} />} />
           <Route path='/brands' element={<Brands ld={loginData} />} />
           <Route path='/creators' element={<Creators ld={loginData} />} />
           <Route path='/course_requests' element={<CourseRequest ld={loginData} />} />

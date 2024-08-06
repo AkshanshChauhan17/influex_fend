@@ -1,6 +1,6 @@
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { nav_links } from "../layout/navigation";
+import { nav_links, nav_links_admin } from "../layout/navigation";
 import { ChevronLeft, ChevronRight, ChevronsLeft, LogOut, Menu } from "react-feather";
 
 export default function DashNavigation({ld}) {
@@ -24,13 +24,21 @@ export default function DashNavigation({ld}) {
             </div>
             {menuOpen ? <ChevronRight onClick={()=>setMenuOpen(false)} className="nav-puller" /> : <ChevronLeft onClick={()=>setMenuOpen(true)} className="nav-puller" />}
             <hr className="fade-70" />
-            <div className="nav-links">
-                {
-                    nav_links.map((e, i)=>{
-                        return <NavLink to={e.link} className={isFocused(e.link) ? "active-nav-link" : "nav-link"} onClick={()=>setActive(i + 1)} key={i}>{e.icon} {e.title}</NavLink>
-                    })
-                }
-            </div>
+            {ld.profile.type==="Admin" ? <div className="nav-links">
+                    {
+                        nav_links_admin.map((e, i)=>{
+                            return <NavLink to={e.link} className={isFocused(e.link) ? "active-nav-link" : "nav-link"} onClick={()=>setActive(i + 1)} key={i}>{e.icon} {e.title}</NavLink>
+                        })
+                    }
+                </div>
+                : <div className="nav-links">
+                    {
+                        nav_links.map((e, i)=>{
+                            return <NavLink to={e.link} className={isFocused(e.link) ? "active-nav-link" : "nav-link"} onClick={()=>setActive(i + 1)} key={i}>{e.icon} {e.title}</NavLink>
+                        })
+                    }
+                </div>
+            }
             <div className="bottom-controls">
                 <button className="nav-control-btn" onClick={()=>handleLogout()}><LogOut style={{rotate: "180deg"}} size={16} strokeWidth={3} />Logout</button>
             </div>

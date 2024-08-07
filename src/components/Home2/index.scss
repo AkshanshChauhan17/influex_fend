@@ -340,6 +340,29 @@
     gap: 20px;
 }
 
+.is-hide-nav {
+    position: sticky;
+    top: 0px;
+    display: flex;
+    gap: 10px;
+    z-index: 5000;
+    .hide-btn {
+        flex: 1;
+        padding: 10px;
+        font-size: 20px;
+        text-align: center;
+        cursor: pointer;
+    }
+    .on {
+        background-color: green;
+        color: white;
+    }
+    .off {
+        background-color: rgb(157, 0, 0);
+        color: white;
+    }
+}
+
 .fourth-box {
     padding: 80px 160px;
     display: grid;

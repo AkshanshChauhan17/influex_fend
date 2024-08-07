@@ -1,4 +1,4 @@
-import { Book, Info, Plus, Slack, Upload, Users, Video } from "react-feather";
+import { Book, Edit, Info, Plus, Slack, Upload, Users, Video } from "react-feather";
 
 export const nav_links_admin = [{
         title: "Dashboard",
@@ -16,6 +16,10 @@ export const nav_links_admin = [{
         title: "Creators",
         icon: <Users size={20} strokeWidth={3} />,
         link: "/creators"
+    },{
+        title: "Pages",
+        icon: <Edit size={20} strokeWidth={3} />,
+        link: "/pages"
     },{
         title: "Upload",
         icon: <Upload size={20} strokeWidth={3} />,

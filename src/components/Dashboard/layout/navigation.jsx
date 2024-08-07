@@ -39,13 +39,5 @@ export const nav_links = [{
     title: "Courses",
     icon: <Book size={20} strokeWidth={3} />,
     link: "/courses"
-},{
-    title: "Upload",
-    icon: <Upload size={20} strokeWidth={3} />,
-    link: "/upload"
-},{
-    title: "Videos",
-    icon: <Video size={20} strokeWidth={3}/>,
-    link: "/videos"
 }
 ]

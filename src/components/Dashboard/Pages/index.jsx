@@ -7,7 +7,9 @@ export default function Pages({logInFun}) {
     const [clickEdit, setClickEdit] = useState({isClicked: false, clickedIndex: -1});
     
     if(clickEdit.isClicked) {
-        return pages[clickEdit.clickedIndex].component;
+        return <div className="editable">
+            {pages[clickEdit.clickedIndex].component}
+        </div>
     };
 
     return <div className="pages">

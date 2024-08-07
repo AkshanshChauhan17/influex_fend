@@ -1,20 +1,32 @@
 .pages {
     margin: 10px;
+    .page-edit-link {
+        padding: 10px 20px;
+        background-color: rgb(77, 0, 128);
+        color: white;
+        width: fit-content;
+        cursor: pointer;
+    }
 }
 
-.home-two {
+.editable {
     overflow-y: scroll;
     color: white;
     zoom: 0.8;
-    .editable {
-        cursor: text;
+    .home-two {
+        .editable {
+            cursor: text;
+        }
+        .editable:focus-visible {
+            background-color: rgb(96, 79, 0);
+            color: rgb(255, 255, 255);
+        }
     }
-    .editable:focus-visible {
-        background-color: rgb(96, 79, 0);
-        color: rgb(255, 255, 255);
+    .home-two::-webkit-scrollbar {
+        display: none;
     }
 }
 
-.home-two::-webkit-scrollbar {
+.editable::-webkit-scrollbar {
     display: none;
 }
